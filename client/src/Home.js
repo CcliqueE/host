@@ -2,13 +2,12 @@ import './App.css';
 import React from 'react'
 import Logo from './img/server-logo.png'
 
-import { Navbar, Nav, Form, InputGroup, FormControl, Button, NavDropdown } from 'react-bootstrap'
-import { Line } from 'react-shapes'
+import { Navbar, Nav, Form, InputGroup, FormControl, Button } from 'react-bootstrap'
 
 function Home() {
   return (
-    <div>
-      <Navbar className="navBar" expand="md">
+    <div className="container">
+      <Navbar className="navBar" fixed="top" expand="md">
         <Navbar.Brand href="/">
           <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
         </Navbar.Brand>
@@ -29,11 +28,10 @@ function Home() {
             </Form>
             <Form className="forms-home" inline>
               <FormControl  type="password" placeholder="Password" className=" mr-sm-2" />
-              <Button type="submit">SignUp/Login</Button>
+              <Button href="/register-login" type="submit">SignUp/Login</Button>
             </Form>
           </Navbar.Collapse>
           </div>
-          
       </Navbar>
     </div>
   );

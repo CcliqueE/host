@@ -1,33 +1,62 @@
 import './App.css';
 import Logo from './img/server-logo.png'
 import React from 'react'
-import { Navbar, Nav, Form, InputGroup, Button, FormControl } from 'react-bootstrap'
+
+import { IoCheckmarkDone } from "react-icons/io5"
+import { ListGroupItem, ListGroup, Card, Col, Row, Navbar, Nav, Form, InputGroup, Button, FormControl } from 'react-bootstrap'
 
 function Pricing() {
     return (
-        <div>
-            <Navbar className="navBar">
+        <div className="container">
+            <Navbar className="navBar" fixed="top" expand="lg">
                 <Navbar.Brand href="/">
                 <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
                 </Navbar.Brand>
                 <div className="Sign">
-                <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
-                <Form inline>
-                    <InputGroup>
-                    <FormControl
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                    />
-                    </InputGroup>
-                </Form>
-                <Form inline>
-                    <FormControl type="password" placeholder="Password" className=" mr-sm-2" />
-                    <Button type="submit">SignUp/Login</Button>
-                </Form>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
+                        </Nav>
+                        <Form className="forms-home" inline>
+                            <InputGroup >
+                                <FormControl
+                                placeholder="Username"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                />
+                            </InputGroup>
+                        </Form>
+                        <Form className="forms-home" inline>
+                            <FormControl  type="password" placeholder="Password" className=" mr-sm-2" />
+                            <Button href="/register-login" type="submit">SignUp/Login</Button>
+                        </Form>
+                    </Navbar.Collapse>
                 </div>
             </Navbar>
-            <h1>This is Pricing</h1>
+            <Row>
+                <Col>
+                    <Card className="pricing" style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title className="pricing-title">$15</Card.Title>
+                            <Card.Text>
+                            </Card.Text>
+                        </Card.Body>
+                        <ul>
+                            <h2 className="accessbul-one"><IoCheckmarkDone/> Info1</h2>
+                            <h2 className="accessbul-one">Info2</h2>
+                            <h2 className="accessbul-one">Info3</h2>
+                            <h2 className="accessbul-one">Info4</h2>
+                        </ul>
+                        <Card.Body>
+                            <Card.Link href="#">Card Link</Card.Link>
+                            <Card.Link href="#">Another Link</Card.Link>
+                        </Card.Body>
+                    </Card>
+                    </Col>
+                <Col></Col>
+                <Col></Col>  
+            </Row>
         </div>
     )
 }

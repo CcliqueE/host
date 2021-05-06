@@ -3,7 +3,7 @@
 
 .navBar {
   height: 60px;
-  background-color: rgb(123, 158, 255);
+  background-color: rgba(211, 211, 211, 0.158);
 }
 .logoImg {
   width: 100px;
@@ -12,6 +12,16 @@
   color: black;
   font-family: "Lato", sans-serif;
   margin-right: 45px;
+}
+.signBtn {
+  color: white;
+  margin: auto;
+  padding-bottom: 15px;
+}
+.Btn {
+  position: relative;
+  width: 150px;
+  height: 45px;
 }
 .Nav:hover {
   color: gray;
@@ -22,9 +32,31 @@
   right: 0;
   margin-right: 5px;
 }
-.forms-home {
-}
 
 /* This is Home Page CSS */
 
+.container {
+  height: 1500px;
+}
+
 /* This is Register Page CSS */
+
+/* This is Pricing Page CSS */
+
+.pricing {
+  background-color: white;
+  top: 30%;
+}
+.pricing-title {
+  position: relative;
+  font-size: 55px;
+  margin: 0px 150px 170px 0px;
+  text-align: center;
+}
+.accessbul-one {
+  color: orange;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* --- */ ;
