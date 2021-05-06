@@ -1,15 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 /* This is consistent CSS */
 
 .navBar {
-  background-color: white;
+  height: 60px;
+  background-color: rgb(123, 158, 255);
 }
 .logoImg {
   width: 100px;
 }
 .Nav {
   color: black;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Lato", sans-serif;
+  margin-right: 45px;
 }
 .Nav:hover {
   color: gray;
@@ -19,6 +21,8 @@
   position: absolute;
   right: 0;
   margin-right: 5px;
+}
+.forms-home {
 }
 
 /* This is Home Page CSS */
