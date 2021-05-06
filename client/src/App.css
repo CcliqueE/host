@@ -1,10 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap");
 /* This is consistent CSS */
 
 .navBar {
-  background-color: red;
+  background-color: white;
 }
-.logInForm {
+.logoImg {
+  width: 100px;
+}
+.Nav {
+  color: black;
+  font-family: "Source Code Pro", monospace;
+}
+.Nav:hover {
+  color: gray;
+}
+.Sign {
+  display: flex;
+  position: absolute;
   right: 0;
+  margin-right: 5px;
 }
 
 /* This is Home Page CSS */

@@ -1,12 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NavBar from './App';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Home from './Home';
+import Pricing from './Pricing'
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <NavBar />
-  </React.StrictMode>,
-  document.getElementById('root')
+ReactDOM.render((
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Home}/>
+      <Route exact path="/pricing" component={Pricing}/>
+    </Switch>
+  </Router>
+  ), document.getElementById('root')
 );
