@@ -3,7 +3,7 @@
 
 .navBar {
   height: 60px;
-  background-color: rgba(211, 211, 211, 0.158);
+  background-color: white;
 }
 .logoImg {
   width: 100px;
@@ -38,25 +38,45 @@
 .container {
   height: 1500px;
 }
+.footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
+  background-color: blue;
+}
 
 /* This is Register Page CSS */
 
 /* This is Pricing Page CSS */
 
-.pricing {
+.card {
   background-color: white;
-  top: 30%;
+  margin-top: 150px;
+  border-color: blue;
+  border-width: ;
+}
+.card:hover {
+  box-shadow: 1px 1px 15px 1px rgb(238, 238, 238);
 }
 .pricing-title {
   position: relative;
   font-size: 55px;
-  margin: 0px 150px 170px 0px;
+  margin: 0px 150px 0px 0px;
   text-align: center;
 }
 .accessbul-one {
   color: orange;
   font-size: 20px;
   margin-bottom: 30px;
+}
+.accessbul-two {
+  margin-bottom: 70px;
+}
+.accessbul-three {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: gray;
 }
 
 /* --- */ ;

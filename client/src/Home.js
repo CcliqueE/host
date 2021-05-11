@@ -33,6 +33,8 @@ function Home() {
           </Navbar.Collapse>
           </div>
       </Navbar>
+      <div className="footer">
+      </div>
     </div>
   );
 }
