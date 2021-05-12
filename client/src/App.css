@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
 /* This is consistent CSS */
 
 .navBar {
@@ -11,7 +12,7 @@
 .Nav {
   color: black;
   font-family: "Lato", sans-serif;
-  margin-right: 45px;
+  margin-right: 7px;
 }
 .signBtn {
   color: white;
@@ -32,6 +33,40 @@
   right: 0;
   margin-right: 5px;
 }
+@media (max-width: 765px) {
+  .navbar-collapse {
+    background-color: rgba(212, 212, 212, 0.199);
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .Nav {
+    margin-left: 48.5%;
+    margin-right: 50%;
+  }
+  .collapse-line {
+    color: gray;
+    border: 1spx solid gray;
+    justify-self: center;
+    width: 30px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+  .forms-home {
+    padding-left: 15%;
+    padding-right: 25%;
+  }
+  form {
+    width: 450px;
+    height: 50px;
+    left: 10%;
+    margin: auto;
+    position: relative;
+  }
+}
 
 /* This is Home Page CSS */
 
@@ -48,13 +83,22 @@
 
 /* This is Register Page CSS */
 
+.signLog {
+  margin-top: 190px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+.line {
+  border-left: 6px solid gray;
+  height: 200px;
+}
+
 /* This is Pricing Page CSS */
 
 .card {
   background-color: white;
   margin-top: 150px;
   border-color: blue;
-  border-width: ;
 }
 .card:hover {
   box-shadow: 1px 1px 15px 1px rgb(238, 238, 238);

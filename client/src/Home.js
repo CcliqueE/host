@@ -11,12 +11,12 @@ function Home() {
         <Navbar.Brand href="/">
           <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
         </Navbar.Brand>
-          <div className="Sign">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+          <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="basic-navbar-nav">
+            <Nav>
               <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
             </Nav>
+            <hr className="collapse-line" />
             <Form className="forms-home" inline>
               <InputGroup >
                 <FormControl
@@ -31,10 +31,7 @@ function Home() {
               <Button href="/register-login" type="submit">SignUp/Login</Button>
             </Form>
           </Navbar.Collapse>
-          </div>
       </Navbar>
-      <div className="footer">
-      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import React from 'react'
 
 import { IoCheckmarkDone } from "react-icons/io5"
 import { IoMdClose } from 'react-icons/io'
-import {  Cardcolumns, Card, Navbar, Nav, Form, InputGroup, Button, FormControl, CardColumns } from 'react-bootstrap'
+import { Card, Navbar, Nav, Form, InputGroup, Button, FormControl, CardColumns } from 'react-bootstrap'
 
 function Pricing() {
     return (
@@ -38,7 +38,7 @@ function Pricing() {
             </Navbar>
 
             {/* End of consistent code */}
-            <CardColumns>
+            <CardColumns expand="sm">
                 <Card className="pricing">
                     <Card.Body>
                         <Card.Title className=" pricing-title">$15</Card.Title>
