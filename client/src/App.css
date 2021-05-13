@@ -7,12 +7,36 @@
   background-color: white;
 }
 .logoImg {
+  margin-top: 0px;
   width: 100px;
 }
 .Nav {
   color: black;
   font-family: "Lato", sans-serif;
   margin-right: 7px;
+}
+.username {
+  border-style: ridge;
+  border-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  height: 2.25em;
+  width: 15em;
+  margin-right: 15px;
+}
+.password {
+  border-style: ridge;
+  border-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  height: 2.25em;
+  margin-right: 15px;
+}
+.username:focus {
+  box-shadow: 0 0 8px 0pt lightblue;
+  outline: none;
+}
+.password:focus {
+  box-shadow: 0 0 8px 0pt lightblue;
+  outline: none;
 }
 .signBtn {
   color: white;
@@ -24,47 +48,68 @@
   width: 150px;
   height: 45px;
 }
-.Nav:hover {
-  color: gray;
-}
 .Sign {
   display: flex;
   position: absolute;
   right: 0;
   margin-right: 5px;
 }
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 765px) {
+  .logoImg {
+    margin-top: -5px;
+  }
   .navbar-collapse {
-    background-color: rgba(212, 212, 212, 0.199);
-    width: 100%;
+    background-color: rgb(252, 252, 252);
     text-align: center;
     padding-top: 30px;
     padding-bottom: 60px;
+    border-radius: 5px;
   }
   .Nav {
-    margin-left: 48.5%;
-    margin-right: 50%;
+    margin: auto;
+  }
+  .Nav {
+    color: white;
   }
   .collapse-line {
     color: gray;
-    border: 1spx solid gray;
+    border: 1spx solid lightgray;
     justify-self: center;
-    width: 30px;
-    margin-bottom: 50px;
-    margin-top: 30px;
-    margin-left: 50%;
-    margin-right: 50%;
-  }
-  .forms-home {
-    padding-left: 15%;
-    padding-right: 25%;
-  }
-  form {
-    width: 450px;
-    height: 50px;
-    left: 10%;
+    width: 300px;
     margin: auto;
-    position: relative;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  .password {
+    border-style: ridge;
+    border-radius: 5px;
+    height: 2.7em;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 80%;
+  }
+  .username {
+    border-style: ridge;
+    border-radius: 5px;
+    height: 2.7em;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 80%;
+  }
+  .username:focus {
+    box-shadow: 0 0 8px 0pt rgba(0, 0, 0, 0.377);
+    outline: none;
+  }
+  .password:focus {
+    box-shadow: 0 0 8px 0pt rgba(0, 0, 0, 0.377);
+    outline: none;
   }
 }
 
@@ -72,6 +117,19 @@
 
 .container {
   height: 1500px;
+}
+.outline {
+  width: 100%;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+  z-index: 1;
+}
+.carousel {
+  margin-top: 100px;
+}
+.carousel.img {
+  z-index: -1;
 }
 .footer {
   clear: both;
@@ -98,10 +156,7 @@
 .card {
   background-color: white;
   margin-top: 150px;
-  border-color: blue;
-}
-.card:hover {
-  box-shadow: 1px 1px 15px 1px rgb(238, 238, 238);
+  border-color: lightskyblue;
 }
 .pricing-title {
   position: relative;

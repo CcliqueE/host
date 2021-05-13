@@ -4,37 +4,29 @@ import React from 'react'
 
 import { IoCheckmarkDone } from "react-icons/io5"
 import { IoMdClose } from 'react-icons/io'
-import { Card, Navbar, Nav, Form, InputGroup, Button, FormControl, CardColumns } from 'react-bootstrap'
+import { Card, Navbar, Nav, Form, Button, CardColumns } from 'react-bootstrap'
 
 function Pricing() {
     return (
         <div className="container">
-            
-            <Navbar className="navBar" fixed="top" expand="lg">
+            <Navbar className="navBar" fixed="top" expand="md">
                 <Navbar.Brand href="/">
                 <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
                 </Navbar.Brand>
-                <div className="Sign">
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
-                        </Nav>
-                        <Form className="forms-home" inline>
-                            <InputGroup >
-                                <FormControl
-                                placeholder="Username"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                />
-                            </InputGroup>
-                        </Form>
-                        <Form className="forms-home" inline>
-                            <FormControl  type="password" placeholder="Password" className=" mr-sm-2" />
-                            <Button href="/register-login" type="submit">SignUp/Login</Button>
-                        </Form>
-                    </Navbar.Collapse>
-                </div>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="basic-navbar-nav">
+                    <Nav>
+                    <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
+                    </Nav>
+                    <hr className="collapse-line" />
+                    <Form className="forms-home" inline>
+                        <input type="text" className="username" name="username" placeholder="Username.."/>
+                    </Form>
+                    <Form className="forms-home" inline>
+                    <input type="password" className="password" name="password" placeholder="Password.."/>
+                    </Form>
+                    <Button href="/register-login" type="submit">SignUp/Login</Button>
+                </Navbar.Collapse>
             </Navbar>
 
             {/* End of consistent code */}

@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Logo from './img/server-logo.png'
 
-import { Col, Navbar, Nav, Form, InputGroup, FormControl, Button } from 'react-bootstrap'
+import { Col, Navbar, Nav, Form, Button } from 'react-bootstrap'
 
 function SignLog () {
     return (
@@ -11,27 +11,20 @@ function SignLog () {
                 <Navbar.Brand href="/">
                 <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
                 </Navbar.Brand>
-                <div className="Sign">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="basic-navbar-nav">
+                    <Nav>
                     <Nav.Link className="Nav" href="/pricing">Pricing</Nav.Link>
                     </Nav>
+                    <hr className="collapse-line" />
                     <Form className="forms-home" inline>
-                    <InputGroup >
-                        <FormControl
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
+                        <input type="text" className="username" name="username" placeholder="Username.."/>
                     </Form>
                     <Form className="forms-home" inline>
-                    <FormControl  type="password" placeholder="Password" className=" mr-sm-2" />
+                    <input type="password" className="password" name="password" placeholder="Password.."/>
+                    </Form>
                     <Button href="/register-login" type="submit">SignUp/Login</Button>
-                    </Form>
                 </Navbar.Collapse>
-                </div>
             </Navbar>
         
             {/* End of consistent code */}
