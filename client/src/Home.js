@@ -4,7 +4,6 @@ import Logo from './img/server-logo.png'
 import SlideOne from './img/server-room1.jpg'
 import SlideTwo from './img/server-room2.jpg'
 import SlideThree from './img/server-room3.jpg'
-import Outline from './img/home-outline-final.png'
 
 import { Carousel, Navbar, Nav, Form, Button } from 'react-bootstrap'
 
@@ -33,9 +32,9 @@ function Home() {
 
       {/* End of consistent code */}
 
-      <img className="outline" alt="outline" type="png/image" src={Outline}/>
+      
       <div className='carousel' >  
-        <Carousel className="owl-carousel owl-theme" interval={2500} keyboard={false} pauseOnHover={false}>  
+        <Carousel className="" keyboard={false} pauseOnHover={false}>  
           <Carousel.Item>  
             <img  
             alt="first slide"

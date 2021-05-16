@@ -5,6 +5,7 @@
 .navBar {
   height: 60px;
   background-color: white;
+  border-bottom: 1.5px solid lightgrey;
 }
 .logoImg {
   margin-top: 0px;
@@ -13,30 +14,40 @@
 .Nav {
   color: black;
   font-family: "Lato", sans-serif;
-  margin-right: 7px;
+  margin-right: 50px;
 }
 .username {
-  border-style: ridge;
-  border-color: rgb(255, 255, 255);
-  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  border-radius: 5px 0px 0px 5px;
   height: 2.25em;
   width: 15em;
-  margin-right: 15px;
+  margin-right: -1px;
+  transition: box-shadow 300ms, border-color 300ms;
 }
 .password {
-  border-style: ridge;
-  border-color: rgb(255, 255, 255);
-  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  border-radius: 0px 5px 5px 0px;
   height: 2.25em;
-  margin-right: 15px;
+  margin-right: 5px;
+  transition: box-shadow 300ms, border-color 300ms;
 }
 .username:focus {
-  box-shadow: 0 0 8px 0pt lightblue;
+  box-shadow: 0 0 2px 0pt lightblue;
   outline: none;
+  border-color: rgb(174, 224, 255);
 }
 .password:focus {
-  box-shadow: 0 0 8px 0pt lightblue;
+  box-shadow: 0 0 2px 0pt lightblue;
   outline: none;
+  border-color: rgb(174, 224, 255);
+}
+::-webkit-input-placeholder {
+  color: rgb(199, 199, 199);
+  font-size: 18px;
 }
 .signBtn {
   color: white;
@@ -87,68 +98,105 @@
     margin-top: 30px;
     margin-bottom: 50px;
   }
-  .password {
-    border-style: ridge;
-    border-radius: 5px;
-    height: 2.7em;
-    margin: auto;
-    margin-bottom: 30px;
-    width: 80%;
-  }
   .username {
-    border-style: ridge;
+    border-style: solid;
     border-radius: 5px;
     height: 2.7em;
     margin: auto;
     margin-bottom: 10px;
     width: 80%;
   }
+  .password {
+    border-style: solid;
+    border-radius: 5px;
+    height: 2.7em;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 80%;
+  }
   .username:focus {
-    box-shadow: 0 0 8px 0pt rgba(0, 0, 0, 0.377);
+    box-shadow: 0 0 4px 0pt rgba(0, 0, 0, 0.377);
     outline: none;
   }
   .password:focus {
-    box-shadow: 0 0 8px 0pt rgba(0, 0, 0, 0.377);
+    box-shadow: 0 0 4px 0pt rgba(0, 0, 0, 0.377);
     outline: none;
+    border-color: rgb(174, 224, 255);
   }
 }
 
 /* This is Home Page CSS */
 
-.container {
-  height: 1500px;
-}
-.outline {
-  width: 100%;
-  left: 0;
-  position: absolute;
-  display: inline-block;
-  z-index: 1;
-}
 .carousel {
-  margin-top: 100px;
+  width: 70em;
+  height: auto;
+  margin-top: 30px;
+  margin-left: -3px;
+  padding: auto;
+  position: absolute;
+  transition: right 1s;
 }
-.carousel.img {
-  z-index: -1;
+@media (max-width: 1200px) {
+  .carousel {
+    right: 10px;
+  }
 }
-.footer {
-  clear: both;
-  position: relative;
-  height: 200px;
-  margin-top: -200px;
-  background-color: blue;
+@media (max-width: 1140px) {
+  .carousel {
+    right: 0px;
+  }
+}
+@media (max-width: 1120px) {
+  .carousel {
+    width: 100%;
+    left: 0;
+  }
+}
+@media (max-width: 765px) {
+  .carousel {
+    margin-left: 0;
+  }
 }
 
 /* This is Register Page CSS */
 
+.form-container {
+  max-width: 1300px;
+  margin: auto;
+}
+.sign-div {
+  margin-right: 20px;
+}
 .signLog {
   margin-top: 190px;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 60px;
+  margin-right: 60px;
+  transition: margin-top 1s;
 }
 .line {
   border-left: 6px solid gray;
   height: 200px;
+}
+.form:focus {
+  box-shadow: 0 0 4px 0pt lightblue;
+  border-color: rgb(174, 224, 255);
+}
+.form::placeholder {
+  color: rgb(199, 199, 199);
+  font-size: 18px;
+}
+.sign-log-btn {
+  margin-bottom: 40px;
+}
+.box {
+  margin-left: 4px;
+}
+@media (max-width: 767px) {
+  .signLog {
+    margin-top: 110px;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
 }
 
 /* This is Pricing Page CSS */
