@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Logo from './img/server-logo.png'
 
-import { Col, Navbar, Nav, Form, Button } from 'react-bootstrap'
+import { Col, Navbar, Nav, Form, Button, Alert } from 'react-bootstrap'
 
 function SignLog () {
     return (
@@ -29,18 +29,20 @@ function SignLog () {
         
             {/* End of consistent code */}
 
+            <Alert variant="info" className="email-alert">
+                <Alert.Heading className="alert-head" >Good to see you!</Alert.Heading>               
+                <p className="alert-p">
+                    We never share your email with anyone else :)
+                </p>
+            </Alert>
             <div className="form-container">  
             <Form className="signLog">
                 <Form.Row>
-                    
                     <Col className="sign-div" xs={12} md={6}>
                         <Form.Group >
                             <h1>Sign Up</h1>
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control className="form" type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                            </Form.Text>
+                            <Form.Control className="form" type="email" placeholder="Email" />
                         </Form.Group>
                         <Form.Group >
                             <Form.Label>Password</Form.Label>
@@ -53,14 +55,12 @@ function SignLog () {
                             Submit
                         </Button>
                     </Col>
+                    <div className="form-line"></div>
                     <Col>
                         <Form.Group>
                             <h1>Log In</h1>
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control className="form" type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                            </Form.Text>
+                            <Form.Control className="form" type="email" placeholder="Email" />
                         </Form.Group>
 
                         <Form.Group >
@@ -76,6 +76,16 @@ function SignLog () {
                     </Col>
                 </Form.Row>
             </Form>
+            </div>
+
+            {/* More consistent code */}
+
+            <div className="footer-100">
+                <h2>Links</h2>
+                <ul className="footer-list">
+                    <li><a className="footer-link" href="/">about</a></li>
+                    <li><a className="footer-link" href="/pricing">pricing</a></li>
+                </ul>
             </div>
         </div>
     )

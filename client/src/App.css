@@ -71,6 +71,27 @@
   outline: none;
   box-shadow: none;
 }
+.footer {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  left: -5px;
+  margin-top: 50px;
+}
+.footer-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a.footer-link {
+  position: relative;
+  color: gray;
+  top: 10px;
+}
+a.footer-link:hover {
+  color: rgb(66, 66, 66);
+  text-decoration: none;
+}
 
 @media (max-width: 765px) {
   .logoImg {
@@ -134,8 +155,14 @@
   margin-left: -3px;
   padding: auto;
   position: absolute;
-  transition: right 1s;
+  transition: right 1s, width 1s;
 }
+.placeholder {
+  height: 806px;
+  visibility: hidden;
+  position: relative;
+}
+
 @media (max-width: 1200px) {
   .carousel {
     right: 10px;
@@ -160,9 +187,40 @@
 
 /* This is Register Page CSS */
 
+.email-alert {
+  position: relative;
+  top: 130px;
+  left: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  height: 90px;
+  width: 370px;
+  text-align: center;
+  transition: top 1.5s, margin-left 1s, text-align 1s;
+}
+.alert-head {
+  position: relative;
+}
+.alert-line {
+  color: rgba(173, 216, 230, 0.199);
+  width: 80px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.alert-p {
+  margin-bottom: 30px;
+}
 .form-container {
   max-width: 1300px;
   margin: auto;
+}
+.form-line {
+  border-left: 2px solid lightgray;
+  height: 400px;
+  right: 10px;
+  top: -30px;
+  position: relative;
 }
 .sign-div {
   margin-right: 20px;
@@ -172,10 +230,6 @@
   margin-left: 60px;
   margin-right: 60px;
   transition: margin-top 1s;
-}
-.line {
-  border-left: 6px solid gray;
-  height: 200px;
 }
 .form:focus {
   box-shadow: 0 0 4px 0pt lightblue;
@@ -191,11 +245,32 @@
 .box {
   margin-left: 4px;
 }
+.footer-100 {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  left: 30px;
+  margin-top: 50px;
+}
+
 @media (max-width: 767px) {
   .signLog {
     margin-top: 110px;
     margin-left: 60px;
     margin-right: 60px;
+  }
+  .form-line {
+    position: absolute;
+    visibility: hidden;
+  }
+  .email-alert {
+    position: relative;
+    top: 100px;
+    margin-left: 55px;
+    margin-bottom: 50px;
+    height: 90px;
+    width: 370px;
+    text-align: left;
   }
 }
 

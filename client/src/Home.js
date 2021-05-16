@@ -63,7 +63,20 @@ function Home() {
             </Carousel.Caption>  
           </Carousel.Item>          
         </Carousel>  
-      </div>  
+      </div>
+      <div className="placeholder">
+        <p>This is content</p>
+      </div>
+
+      {/* More consistent code */}
+
+      <div className="footer">
+          <h2>Links</h2>
+          <ul className="footer-list">
+              <li><a className="footer-link" href="/">about</a></li>
+              <li><a className="footer-link" href="/pricing">pricing</a></li>
+          </ul>
+      </div>
     </div>
   );
 }
