@@ -2,13 +2,25 @@ import './App.css';
 import Logo from './img/server-logo.png'
 import React from 'react'
 
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { IoCheckmarkDone } from "react-icons/io5"
 import { IoMdClose } from 'react-icons/io'
 import { Card, Navbar, Nav, Form, Button, CardColumns } from 'react-bootstrap'
 
-function Pricing() {
+class Pricing extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+    
+    componentDidMount() {
+    }
+
+    render() {
     return (
-        <div className="container">
+        <div className="">
             <Navbar className="navBar" fixed="top" expand="md">
                 <Navbar.Brand href="/">
                 <img className="logoImg" alt="logo-img" type="image/png" src={Logo}/>
@@ -30,7 +42,9 @@ function Pricing() {
             </Navbar>
 
             {/* End of consistent code */}
-            <CardColumns expand="sm">
+            
+            <div className="cards">
+            <CardColumns className="pricing-cards">
                 <Card className="pricing">
                     <Card.Body>
                         <Card.Title className=" pricing-title">$15</Card.Title>
@@ -89,8 +103,22 @@ function Pricing() {
                     </Card.Body>
                 </Card>
             </CardColumns>
+            </div>
+
+            {/* More consistent code */}
+
+            <hr className="footer-hr" />
+            <div className="footer-100">
+                <h2>Links</h2>
+                <ul className="footer-list">
+                    <li><a className="footer-link" href="/">about <AiOutlineInfoCircle/></a></li>
+                    <li><a className="footer-link" href="/pricing">pricing</a></li>
+                </ul>
+            </div>
         </div>
     )
+    }
 }
+
 
 export default Pricing;

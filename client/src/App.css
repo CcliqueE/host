@@ -145,6 +145,18 @@ a.footer-link:hover {
     border-color: rgb(174, 224, 255);
   }
 }
+.footer-100 {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  left: 30px;
+  margin-top: 90px;
+}
+.footer-hr {
+  position: relative;
+  top: 60px;
+  color: rgba(211, 211, 211, 0.315);
+}
 
 /* This is Home Page CSS */
 
@@ -155,7 +167,11 @@ a.footer-link:hover {
   margin-left: -3px;
   padding: auto;
   position: absolute;
-  transition: right 1s, width 1s;
+  transition: right 1s, width 500ms;
+}
+.carousel-img {
+  border-radius: 0 0 5px 5px;
+  transition: border 1s;
 }
 .placeholder {
   height: 806px;
@@ -194,9 +210,9 @@ a.footer-link:hover {
   margin: auto;
   margin-bottom: 50px;
   height: 90px;
-  width: 370px;
+  width: 399px;
   text-align: center;
-  transition: top 1.5s, margin-left 1s, text-align 1s;
+  transition: top 1.5s, left 1s, width 1s;
 }
 .alert-head {
   position: relative;
@@ -245,13 +261,6 @@ a.footer-link:hover {
 .box {
   margin-left: 4px;
 }
-.footer-100 {
-  position: relative;
-  height: 180px;
-  width: 100%;
-  left: 30px;
-  margin-top: 50px;
-}
 
 @media (max-width: 767px) {
   .signLog {
@@ -266,26 +275,31 @@ a.footer-link:hover {
   .email-alert {
     position: relative;
     top: 100px;
-    margin-left: 55px;
     margin-bottom: 50px;
+    left: 2px;
     height: 90px;
-    width: 370px;
-    text-align: left;
+    width: 399px;
   }
 }
 
 /* This is Pricing Page CSS */
 
+.cards {
+  max-width: 1000px;
+  margin: auto;
+}
 .card {
+  position: relative;
   background-color: white;
-  margin-top: 150px;
-  border-color: lightskyblue;
+  margin-top: 80px;
+  border-color: rgb(226, 226, 226);
+  border-width: 2px;
+  border-radius: 10px;
 }
 .pricing-title {
   position: relative;
   font-size: 55px;
-  margin: 0px 150px 0px 0px;
-  text-align: center;
+  text-align: start;
 }
 .accessbul-one {
   color: orange;
@@ -299,6 +313,16 @@ a.footer-link:hover {
   font-size: 20px;
   margin-bottom: 30px;
   color: gray;
+}
+@media (max-width: 765px) {
+  .pricing-cards {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pricing {
+    margin-top: 10px;
+  }
 }
 
 /* --- */ ;

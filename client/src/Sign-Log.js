@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Logo from './img/server-logo.png'
 
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { Col, Navbar, Nav, Form, Button, Alert } from 'react-bootstrap'
 
 function SignLog () {
@@ -32,7 +33,7 @@ function SignLog () {
             <Alert variant="info" className="email-alert">
                 <Alert.Heading className="alert-head" >Good to see you!</Alert.Heading>               
                 <p className="alert-p">
-                    We never share your email with anyone else :)
+                    We won't ever share your email with anyone else :)
                 </p>
             </Alert>
             <div className="form-container">  
@@ -48,6 +49,10 @@ function SignLog () {
                             <Form.Label>Password</Form.Label>
                             <Form.Control className="form" type="password" placeholder="Password" />
                         </Form.Group>
+                        <Form.Group >
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control className="form" type="password" placeholder="Confirm Password" />
+                        </Form.Group>
                         <Form.Group controlId="box1">
                             <Form.Check className="box" type="checkbox" label="Remember Me" />
                         </Form.Group>
@@ -62,7 +67,6 @@ function SignLog () {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control className="form" type="email" placeholder="Email" />
                         </Form.Group>
-
                         <Form.Group >
                             <Form.Label>Password</Form.Label>
                             <Form.Control className="form" type="password" placeholder="Password" />
@@ -80,10 +84,11 @@ function SignLog () {
 
             {/* More consistent code */}
 
+            <hr className="footer-hr" />
             <div className="footer-100">
                 <h2>Links</h2>
                 <ul className="footer-list">
-                    <li><a className="footer-link" href="/">about</a></li>
+                    <li><a className="footer-link" href="/">about <AiOutlineInfoCircle/></a></li>
                     <li><a className="footer-link" href="/pricing">pricing</a></li>
                 </ul>
             </div>
