@@ -40,21 +40,14 @@ app.post('/users', async (req, res) => {
 //login a user
 
 app.post('/users/login', async (req, res) => {
-    const query = {
-        text: 'SELECT username FROM users',
-        rowMode: 'array'
-    }
-    const query_two = {
-        text: 'SELECT password FROM users WHERE username = $1',
-        values: [req.body.username],
-        rowMode: 'array'
-    }
-    const user = (req.body.username === pool.query(query))
-    if (user === false) {
+    const query = await pool.query('SELECT username FROM users WHERE username = $1', [req.body.username])
+    const query_two = await pool.query('SELECT password FROM users WHERE username = $1', [req.body.username])
+    const compare = (((query_two.rows).map(({ password }) => password)).toString())
+    if (query === false) {
         return res.status(400).send("User doesn't exist")
     }
     try {
-        if (await bcrypt.compare(req.body.password, pool.query(query_two).toString())) {
+        if (await bcrypt.compare(req.body.password, compare)) {
             res.status(201).send('Login Successful')
         } else {
             res.send ('Not allowed')
@@ -64,25 +57,8 @@ app.post('/users/login', async (req, res) => {
     }
 })
 
-const query = {
-    text: 'SELECT username FROM users',
-        rowMode: 'array'
-}
-
-pool.query(query, (err, res) => {
-    if (err) {
-      console.error(err.stack)
-    } else {
-      console.log(res.rows)
-    }
-  })
-
-console.log('jake' === pool.query(query))
-
 //create a subsciption setup
 
 //only allow certain people to access this piece of the website
 
-app.listen(5000, () => {
-    console.log('server has started on port 5000')
-})
+app.listen(5000, () => {console.log('server has started on port 5000')})
