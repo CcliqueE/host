@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 const pool = require('./db')
+const client = require('./db')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+
+client.connect()
 
 app.use(cors())
 app.use(express.json())
@@ -10,7 +13,7 @@ app.use(express.json())
 //ROUTES//
 
 app.get('/users', (req, res) => {
-    res.json(users)
+    res.json(arr)
 })
 
 //create a user
@@ -37,58 +40,48 @@ app.post('/users', async (req, res) => {
 //login a user
 
 app.post('/users/login', async (req, res) => {
-    const user = users.find(user => user.name = req.body.username)
-    if (user === null) {
+    const query = {
+        text: 'SELECT username FROM users',
+        rowMode: 'array'
+    }
+    const query_two = {
+        text: 'SELECT password FROM users WHERE username = $1',
+        values: [req.body.username],
+        rowMode: 'array'
+    }
+    const user = (req.body.username === pool.query(query))
+    if (user === false) {
         return res.status(400).send("User doesn't exist")
     }
     try {
-        if(await bcrypt.compare(req.body.password, )) {
-            res.send('Login Successful')
+        if (await bcrypt.compare(req.body.password, pool.query(query_two).toString())) {
+            res.status(201).send('Login Successful')
         } else {
             res.send ('Not allowed')
         }
-    } catch {
-        res.status(500).send()
+    } catch (err){
+        res.status(500).send(err.message)
     }
 })
+
+const query = {
+    text: 'SELECT username FROM users',
+        rowMode: 'array'
+}
+
+pool.query(query, (err, res) => {
+    if (err) {
+      console.error(err.stack)
+    } else {
+      console.log(res.rows)
+    }
+  })
+
+console.log('jake' === pool.query(query))
 
 //create a subsciption setup
 
 //only allow certain people to access this piece of the website
-
-app.post('/names', async (req, res) => {
-    try {
-        const inputs = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname
-        }
-        const names = [inputs.firstname, inputs.lastname]
-        const newFullName = await pool.query(
-            "INSERT INTO names (firstname, lastname) VALUES ($1, $2)",
-            names
-        )
-
-        res.json(newFullName)
-
-    } catch (err) {
-        res.status(500).send(err.message)
-    }
-})
-
-app.post('/names2', async (req, res) => {
-    try {
-        const { firstname } = req.body
-        const newFullName = await pool.query(
-            "INSERT INTO names (firstname) VALUES ($1)",
-            [firstname]
-        )
-
-        res.json(newFullName)
-    } catch (err) {
-        res.status(500).send(err.message)
-    }
-})
-
 
 app.listen(5000, () => {
     console.log('server has started on port 5000')
