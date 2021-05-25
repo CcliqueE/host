@@ -1,0 +1,78 @@
+.email-alert {
+  position: relative;
+  top: 130px;
+  left: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  height: 90px;
+  width: 399px;
+  text-align: center;
+  transition: top 1.5s, left 1s, width 1s;
+}
+.alert-head {
+  position: relative;
+}
+.alert-line {
+  color: rgba(173, 216, 230, 0.199);
+  width: 80px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.alert-p {
+  margin-bottom: 30px;
+}
+.form-container {
+  max-width: 1300px;
+  margin: auto;
+}
+.form-line {
+  border-left: 2px solid lightgray;
+  height: 400px;
+  right: 10px;
+  top: -30px;
+  position: relative;
+}
+.sign-div {
+  margin-right: 20px;
+}
+.signLog {
+  margin-top: 190px;
+  margin-left: 60px;
+  margin-right: 60px;
+  transition: margin-top 1s;
+}
+.form:focus {
+  box-shadow: 0 0 4px 0pt lightblue;
+  border-color: rgb(174, 224, 255);
+}
+.form::placeholder {
+  color: rgb(199, 199, 199);
+  font-size: 18px;
+}
+.sign-log-btn {
+  margin-bottom: 40px;
+}
+.box {
+  margin-left: 4px;
+}
+
+@media (max-width: 767px) {
+  .signLog {
+    margin-top: 110px;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+  .form-line {
+    position: absolute;
+    visibility: hidden;
+  }
+  .email-alert {
+    position: relative;
+    top: 100px;
+    margin-bottom: 50px;
+    left: 2px;
+    height: 90px;
+    width: 399px;
+  }
+}

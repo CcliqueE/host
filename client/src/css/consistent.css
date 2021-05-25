@@ -1,0 +1,190 @@
+.navBar {
+  height: 60px;
+  background-color: #362020;
+}
+.logoImg {
+  position: absolute;
+  top: 9px;
+  width: 110px;
+}
+.Nav {
+  color: rgb(231, 231, 231);
+  font-family: "Lato", sans-serif;
+  margin-right: 50px;
+}
+.Nav:hover {
+  text-decoration: none;
+  color: lightgray;
+}
+.username {
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  border-radius: 5px 0px 0px 5px;
+  height: 2.25em;
+  width: 15em;
+  margin-right: -1px;
+  transition: box-shadow 300ms, border-color 300ms;
+}
+.password {
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  border-radius: 0px 5px 5px 0px;
+  height: 2.25em;
+  margin-right: 5px;
+  transition: box-shadow 300ms, border-color 300ms;
+}
+.username:focus {
+  box-shadow: 0 0 2px 0pt lightblue;
+  outline: none;
+  border-color: rgb(174, 224, 255);
+  z-index: 1;
+}
+.password:focus {
+  box-shadow: 0 0 2px 0pt lightblue;
+  outline: none;
+  border-color: rgb(174, 224, 255);
+}
+::-webkit-input-placeholder {
+  color: rgb(199, 199, 199);
+  font-size: 18px;
+}
+.signBtn {
+  color: white;
+  margin: auto;
+  padding-bottom: 15px;
+}
+.Btn {
+  position: relative;
+  width: 150px;
+  height: 45px;
+}
+.Sign {
+  display: flex;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+.footer {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  left: -5px;
+  margin-top: 50px;
+}
+.footer-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a.footer-link {
+  position: relative;
+  color: gray;
+  top: 10px;
+}
+a.footer-link:hover {
+  color: rgb(66, 66, 66);
+  text-decoration: none;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0;
+}
+::-webkit-scrollbar-track {
+  background-color: #362020;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cd402a;
+  border-radius: 60px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c43722;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 991px) {
+  .logoImg {
+    margin-top: 0px;
+  }
+  .collapse {
+    position: relative;
+    top: 15px;
+  }
+  .toggle {
+    position: relative;
+    margin-bottom: 10px;
+    border: 0;
+  }
+  .toggle:enabled {
+    position: relative;
+    margin-top: 5px;
+    color: lightgray;
+  }
+  .Nav {
+    color: black;
+    margin-right: 0;
+  }
+  .navbar-collapse {
+    background-color: rgb(252, 252, 252);
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    border-radius: 5px;
+  }
+  .collapse-line {
+    color: gray;
+    border: 1px solid lightgray;
+    border-radius: 40%;
+    justify-self: center;
+    width: 300px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  .username {
+    border-style: solid;
+    border-radius: 5px;
+    height: 2.7em;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 80%;
+  }
+  .password {
+    border-style: solid;
+    border-radius: 5px;
+    height: 2.7em;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  .username:focus {
+    box-shadow: 0 0 4px 0pt rgba(0, 0, 0, 0.377);
+    outline: none;
+  }
+  .password:focus {
+    box-shadow: 0 0 4px 0pt rgba(0, 0, 0, 0.377);
+    outline: none;
+    border-color: rgb(174, 224, 255);
+  }
+}
+.footer-100 {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  left: 30px;
+  margin-top: 90px;
+}
+.footer-hr {
+  position: relative;
+  top: 60px;
+  color: rgba(211, 211, 211, 0.315);
+}

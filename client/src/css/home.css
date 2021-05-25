@@ -1,0 +1,9 @@
+.title-block {
+  position: relative;
+  height: 700px;
+  width: 100%;
+  top: -300px;
+  background-color: #362020;
+  transform: skewY(15deg);
+  overflow: hidden;
+}
