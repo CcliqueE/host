@@ -3,7 +3,7 @@ import Logo from '../img/rust-logo.png'
 import '../css/consistent.css'
 
 import { VscMenu } from 'react-icons/vsc'
-import { Navbar, Nav, Form, Button } from 'react-bootstrap'
+import { Navbar, Button } from 'react-bootstrap'
 
 export default class NavBar extends React.Component {
     constructor (props){
@@ -23,17 +23,13 @@ export default class NavBar extends React.Component {
                     </Navbar.Brand>
                     <Navbar.Toggle className="toggle" aria-controls="basic-navbar-nav"><VscMenu className="burger"/></Navbar.Toggle>
                     <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="collapse">
-                        <Nav >
-                        <div className="nav-contain"><a className="Nav" href="/pricing">Pricing</a></div>
-                        </Nav>
+                        <div className="nav-contain">
+                        <a className="Nav" href="/pricing">Pricing</a>
+                        <a className="Nav" href="/pricing">Dashboard</a>
+                        <a className="Nav" href="/pricing">Forum</a>
+                        </div>
                         <hr className="collapse-line" />
-                        <Form className="forms-home" inline>
-                            <input type="text" className="username" name="username" placeholder="Username"/>
-                        </Form>
-                        <Form className="forms-home" inline>
-                        <input type="password" className="password" name="password" placeholder="Password"/>
-                        </Form>
-                        <Button href="/register-login" type="submit">SignUp/Login</Button>
+                        <Button className="nav-btn sign-btn" href="/register-login" type="submit">Sign In</Button>
                     </Navbar.Collapse>
                 </Navbar>
                 </div>

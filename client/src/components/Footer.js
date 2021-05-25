@@ -13,8 +13,8 @@ export default class Footer extends React.Component {
 
     render(){
         return (
-            <div>
-                <hr className="footer-hr" />
+            <div className="footer-contain">
+                <div className="footer-back"></div>
                 <div className="footer-100">
                     <h2>Links</h2>
                     <ul className="footer-list">
