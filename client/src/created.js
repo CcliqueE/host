@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 
-class SignIn extends React.Component {
+class Created extends React.Component {
     constructor (props){
         super(props)
         this.state = {
@@ -154,6 +154,10 @@ class SignIn extends React.Component {
                     <div className="form-line"></div>
                     <Col>
                         <Form.Group>
+                            <div className="created-alert">
+                                    <h4 className="created-alert-text1">Account Created</h4>
+                                    <h4 className="created-alert-text2">Log In</h4>
+                            </div>
                             <h1>Log In</h1>
                             <Form.Label>Username</Form.Label>
                             <Form.Control 
@@ -189,4 +193,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn
+export default Created

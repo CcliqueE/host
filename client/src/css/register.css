@@ -28,7 +28,7 @@
 }
 .form-line {
   border-left: 2px solid lightgray;
-  height: 400px;
+  height: 500px;
   right: 10px;
   top: -30px;
   position: relative;
@@ -55,6 +55,91 @@
 }
 .box {
   margin-left: 4px;
+}
+.confirm-alert {
+  display: flex;
+  background-color: rgb(255, 106, 106);
+  height: 55px;
+  text-align: center;
+  align-items: center;
+  border-radius: 5px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.exclamation {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: 5px;
+  background-color: rgb(224, 96, 96);
+  height: 55px;
+  width: 35px;
+  border-radius: 5px 0 0 5px;
+}
+.ex-text {
+  font-size: 50px;
+  margin-top: 3px;
+}
+.con-alert-text2 {
+  font-size: 18px;
+  line-height: 10px;
+  margin-top: 9px;
+  margin-left: 50px;
+}
+.con-alert-text3 {
+  font-size: 13px;
+  margin-left: 14px;
+}
+.taken-alert {
+  display: flex;
+  position: relative;
+  height: 50px;
+  width: 300px;
+  align-items: center;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: rgb(255, 106, 106);
+}
+.taken-alert-text {
+  position: relative;
+  left: 10px;
+  top: 2px;
+}
+.taken-alert-ex {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px 0 0 5px;
+  background-color: rgb(224, 96, 96);
+}
+.taken-ex-text {
+  font-size: 40px;
+  margin-top: 5px;
+}
+.created-alert {
+  position: relative;
+  height: 100px;
+  width: 500px;
+  text-align: center;
+  margin: auto;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px gray;
+  background-color: lightgreen;
+}
+.created-alert-text1 {
+  position: relative;
+  top: 16px;
+}
+.created-alert-text2 {
+  position: relative;
+  line-height: 30px;
+  top: 10px;
 }
 
 @media (max-width: 767px) {

@@ -25,8 +25,8 @@ export default class NavBar extends React.Component {
                     <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="collapse">
                         <div className="nav-contain">
                         <a className="Nav" href="/pricing">Pricing</a>
-                        <a className="Nav" href="/pricing">Dashboard</a>
-                        <a className="Nav" href="/pricing">Forum</a>
+                        <a className="Nav" href="/dashboard">Dashboard</a>
+                        <a className="Nav" href="/forum">Forum</a>
                         </div>
                         <hr className="collapse-line" />
                         <Button className="nav-btn sign-btn" href="/register-login" type="submit">Sign In</Button>
