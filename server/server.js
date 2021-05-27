@@ -5,6 +5,7 @@ const cors = require('cors')
 const bcrypt = require('bcrypt')
 
 app.use(cors())
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 //ROUTES//
@@ -15,13 +16,15 @@ app.get('/users', (req, res) => {
 
 //create a user
 
-app.post('/users/register', async (req, res) => {
+app.post('/register', async (req, res) => {
     const query = await pool.query('SELECT email FROM users WHERE email = $1', [req.body.email])
+
     const exist = ((query.rows).map(({ email }) => email)).toString()
     const hashedPassword = await bcrypt.hash(req.body.password, 12)
     const users = [req.body.email, req.body.username, hashedPassword]
+    console.log(req.body.username)
     if (exist === req.body.email) {
-        res.status(400).send("Account with this email already exists")
+        res.status(400).send(console.log('User with this email already exists'))
     } else {
         try {
         const createUser = await pool.query(
@@ -35,19 +38,20 @@ app.post('/users/register', async (req, res) => {
 
 //login a user
 
-app.post('/users/login', async (req, res) => {
-    const query = await pool.query('SELECT username FROM users WHERE username = $1', [req.body.username])
-    const query_two = await pool.query('SELECT password FROM users WHERE username = $1', [req.body.username])
-    const exist = ((query.rows).map(({ username }) => username)).toString()
+app.post('/login', async (req, res) => {
+    const query = await pool.query('SELECT email FROM users WHERE email = $1', [req.body.email])
+    const query_two = await pool.query('SELECT password FROM users WHERE email = $1', [req.body.email])
+    const exist = ((query.rows).map(({ email }) => email)).toString()
     const compare = ((query_two.rows).map(({ password }) => password)).toString()
-    if (exist !== req.body.username) {
-        return res.status(400).send("User doesn't exist")
+    console.log(exist)
+    if (exist !== req.body.email) {
+        return res.status(400).send('User does not exist')
     } else {
         try {
             if (await bcrypt.compare(req.body.password, compare)) {
                 res.status(201).send('Login Successful')
             } else {
-                res.send ("User with this password doesn't exist")
+                res.status(401).send("User with this password doesn't exist")
             }
         } catch(err) {
             res.status(500).send(err.message)

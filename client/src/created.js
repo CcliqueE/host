@@ -6,21 +6,24 @@ import Footer from './components/Footer'
 
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 
-class Created extends React.Component {
+class SignIn extends React.Component {
     constructor (props){
         super(props)
         this.state = {
             email: '',
+            loginemail: '',
             username: '',
             password: '',
+            loginpass: '',
             passconfirm: '',
             show: true,
-            taken: Boolean
+            taken: Boolean,
+            pass: Boolean
         }
 
         this.handleInputChange = this.handleInputChange.bind(this)
-
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.registerSubmit = this.registerSubmit.bind(this);
+        this.loginSubmit = this.loginSubmit.bind(this)
     }
 
     handleInputChange = e => {
@@ -29,7 +32,7 @@ class Created extends React.Component {
         });
     };
 
-    handleSubmit(event) {
+    registerSubmit(event) {
         if (this.state.password !== this.state.passconfirm) {
             event.preventDefault()
             alert('Passwords do not match')
@@ -38,18 +41,17 @@ class Created extends React.Component {
         this.state.password !== '' || 
         this.state.passconfirm !== '' ) {
             event.preventDefault()
-            const user = {
+            const register = {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password
             }
-            console.log(user)
             axios
-            .post('http://localhost:5000/register', user)
+            .post('http://localhost:5000/register', register)
             .then(() => {window.location = '/register-login/created'})
             .then(this.setState({taken: false}))
             .catch(err => {
-                console.error(err);
+                console.log(typeof err);
                 this.setState({taken: true})
             });
         } else {
@@ -57,8 +59,25 @@ class Created extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }    
+    loginSubmit(event) {
+        if (this.state.loginuser !== '' ||  this.state.loginpass !== '') {
+            event.preventDefault()
+            const login = {
+                email: this.state.loginemail,
+                password: this.state.loginpass
+            }
+            axios
+            .post('http://localhost:5000/login', login)
+            .then(() => {window.location = '/dashboard'})
+            .catch(err => {
+                console.error(err)
+                this.setState({pass: false})
+            })
+        } else {
+            event.preventDefault()
+            alert('doesnt work')
+        }
+    }
 
     render() {
 
@@ -74,7 +93,7 @@ class Created extends React.Component {
                 </p>
             </Alert>
             <div className="form-container">  
-            <Form onSubmit={this.handleSubmit} className="signLog">
+            <Form onSubmit={this.registerSubmit} className="signLog">
                 <Form.Row>
                     <Col className="sign-div" xs={12} md={6}>
                         <Form.Group>
@@ -151,46 +170,71 @@ class Created extends React.Component {
                         >Submit</Button>
                         
                     </Col>
+                    
                     <div className="form-line"></div>
+                    
                     <Col>
                         <Form.Group>
                             <div className="created-alert">
-                                    <h4 className="created-alert-text1">Account Created</h4>
-                                    <h4 className="created-alert-text2">Log In</h4>
+                                <h4 className="created-alert-text1">Account Created</h4>
+                                <h4 className="created-alert-text2">Log In</h4>
                             </div>
                             <h1>Log In</h1>
-                            <Form.Label>Username</Form.Label>
+                            {this.state.pass === false ? <div className="wrg-pass">
+                            <div className="wrg-ex-contain"><h4 className="wrg-ex">!</h4></div>
+                            <h4 className="wrg-pass-text">Wrong Password or Email</h4>
+                            </div>
+                             : <div></div>}
+                            <Form.Label>Email address</Form.Label>
                             <Form.Control 
-                            name="username"
+                            name="loginemail"
                             className="form" 
                             type="email" 
-                            placeholder="Username" />
+                            placeholder="Email"
+                            value={this.state.loginemail}
+                            onChange={this.handleInputChange}
+                            />
                         </Form.Group>
                         <Form.Group >
                             <Form.Label>Password</Form.Label>
                             <Form.Control 
-                            name="password"
+                            name="loginpass"
                             className="form" 
                             type="password" 
-                            placeholder="Password" />
+                            placeholder="Password"
+                            value={this.state.loginpass}
+                            onChange={this.handleInputChange}/>
                         </Form.Group>
                         <Form.Group className="box" controlId="box2">
                             <Form.Check type="checkbox" label="Remember Me" />
                         </Form.Group>
-                        <Button className="sign-log-btn" href="dashboard-sub" variant="primary" type="submit">
+                        <Button 
+                        className="sign-log-btn" 
+                        href="" 
+                        variant="primary" 
+                        type="submit"
+                        value="Submit"
+                        onClick={this.loginSubmit}
+                        >
                             Submit
                         </Button>
                     </Col>
+                    
                 </Form.Row>
-            </Form>
+                </Form>
             </div>
             
             
 
             <Footer/>
         </div>
-    )
+        )
     }
 }
 
-export default Created
+export default SignIn
+
+
+
+
+
