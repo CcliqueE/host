@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../img/rust-logo.png'
+import NavProfile from './NavProfile'
 import '../css/consistent.css'
 
 import { VscMenu } from 'react-icons/vsc'
@@ -14,6 +15,8 @@ export default class NavBar extends React.Component {
     }
 
     render(){
+        console.log()
+
         return (
             <div>
                 <div className="nav-contain">
@@ -29,7 +32,8 @@ export default class NavBar extends React.Component {
                         <a className="Nav" href="/forum">Forum</a>
                         </div>
                         <hr className="collapse-line" />
-                        <Button className="nav-btn sign-btn" href="/register-login" type="submit">Sign In</Button>
+                        {sessionStorage.getItem('username') !== null && sessionStorage.getItem('username').includes('') === true ? <NavProfile/>
+                         : <Button className="nav-btn sign-btn" href="/register-login" type="submit">Sign In</Button>}
                     </Navbar.Collapse>
                 </Navbar>
                 </div>

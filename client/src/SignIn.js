@@ -13,6 +13,7 @@ class SignIn extends React.Component {
             email: '',
             loginemail: '',
             username: '',
+            loginuser: '',
             password: '',
             loginpass: '',
             passconfirm: '',
@@ -55,7 +56,7 @@ class SignIn extends React.Component {
                 this.setState({taken: true})
             });
         } else {
-            alert('doesnt work')
+            window.location.reload()
         }
     }
 
@@ -64,18 +65,19 @@ class SignIn extends React.Component {
             event.preventDefault()
             const login = {
                 email: this.state.loginemail,
+                username: this.state.loginuser,
                 password: this.state.loginpass
             }
             axios
             .post('http://localhost:5000/login', login)
             .then(() => {window.location = '/dashboard'})
+            .then(() => {sessionStorage.setItem('username', this.state.loginuser)})
             .catch(err => {
                 console.error(err)
                 this.setState({pass: false})
             })
         } else {
             event.preventDefault()
-            alert('doesnt work')
         }
     }
 
@@ -178,7 +180,7 @@ class SignIn extends React.Component {
                             <h1>Log In</h1>
                             {this.state.pass === false ? <div className="wrg-pass">
                             <div className="wrg-ex-contain"><h4 className="wrg-ex">!</h4></div>
-                            <h4 className="wrg-pass-text">Wrong Password or Email</h4>
+                            <h4 className="wrg-pass-text">Account doesn't exist!!</h4>
                             </div>
                              : <div></div>}
                             <Form.Label>Email address</Form.Label>
@@ -188,6 +190,17 @@ class SignIn extends React.Component {
                             type="email" 
                             placeholder="Email"
                             value={this.state.loginemail}
+                            onChange={this.handleInputChange}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                        <Form.Label>Username</Form.Label>
+                            <Form.Control 
+                            name="loginuser"
+                            className="form" 
+                            type="text" 
+                            placeholder="Username"
+                            value={this.state.loginusername}
                             onChange={this.handleInputChange}
                             />
                         </Form.Group>
