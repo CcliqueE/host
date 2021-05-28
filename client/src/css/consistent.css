@@ -79,9 +79,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #c43722;
 }
-::-webkit-scrollbar-thumb:horizontal {
-  background-color: rgba(0, 0, 0, 0);
-}
 
 @media (max-width: 991px) {
   .logoImg {

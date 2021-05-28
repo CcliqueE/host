@@ -1,0 +1,50 @@
+.profile-contain {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 150px;
+  margin-bottom: -100px;
+}
+.profile-nav {
+  border-style: solid;
+  border-color: rgb(223, 223, 223);
+  border-width: 1px;
+  border-radius: 6px;
+  height: 300px;
+}
+.profile-pic-choose {
+  position: relative;
+  width: 215px;
+  height: 210px;
+  left: 10px;
+  box-shadow: 0 0 5px 1px grey;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+}
+.profile-pic {
+  position: relative;
+  width: 200px;
+  height: 195px;
+  margin: auto;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+}
+.profile-pic-edit {
+  position: absolute;
+  opacity: 0%;
+  width: 35px;
+  bottom: -2px;
+  right: -1px;
+}
+.pen-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  z-index: -1;
+}
+::-webkit-file-upload-button {
+  cursor: pointer;
+}

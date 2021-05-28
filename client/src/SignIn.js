@@ -172,9 +172,7 @@ class SignIn extends React.Component {
                         >Submit</Button>
                         
                     </Col>
-                    
                     <div className="form-line"></div>
-                    
                     <Col>
                         <Form.Group>
                             <h1>Log In</h1>

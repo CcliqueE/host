@@ -1,0 +1,16 @@
+.dashboard-contain {
+  position: relative;
+  top: 100px;
+  max-width: 1500px;
+  margin: auto;
+  margin-bottom: 200px;
+  height: 650px;
+  border-style: solid;
+  border-radius: 5px;
+}
+.side-nav-burger {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}

@@ -41,17 +41,22 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     const query = await pool.query('SELECT email FROM users WHERE email = $1', [req.body.email])
     const query_two = await pool.query('SELECT password FROM users WHERE email = $1', [req.body.email])
+    const query_three = await pool.query('SELECT username FROM users WHERE email = $1', [req.body.email])
     const exist = ((query.rows).map(({ email }) => email)).toString()
     const compare = ((query_two.rows).map(({ password }) => password)).toString()
-    console.log(exist)
+    const username = ((query_three.rows).map(({ username }) => username)).toString()
+    console.log(username)
+
     if (exist !== req.body.email) {
-        return res.status(400).send('User does not exist')
+        return res.status(400).send('User does not exist with this email')
+    } else if (username !== req.body.username) {
+        return res.status(401).send('User does not exist with this username') 
     } else {
         try {
             if (await bcrypt.compare(req.body.password, compare)) {
                 res.status(201).send('Login Successful')
             } else {
-                res.status(401).send("User with this password doesn't exist")
+                res.status(404).send("User with this password doesn't exist")
             }
         } catch(err) {
             res.status(500).send(err.message)

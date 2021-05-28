@@ -1,0 +1,19 @@
+.pro-edit-contain {
+  position: relative;
+  top: -200px;
+  height: 500px;
+}
+.pro-edit-card {
+  display: flex;
+  height: 500px;
+  width: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(212, 212, 212);
+  border-radius: 5px;
+}
+.file-choose {
+  position: relative;
+  top: 20px;
+  left: 40px;
+}
