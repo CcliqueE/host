@@ -27,13 +27,13 @@ export default class NavBar extends React.Component {
                     <Navbar.Toggle className="toggle" aria-controls="basic-navbar-nav"><VscMenu className="burger"/></Navbar.Toggle>
                     <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="collapse">
                         <div className="nav-contain">
-                        <a className="Nav" href="/pricing">Pricing</a>
-                        <a className="Nav" href="/dashboard">Dashboard</a>
-                        <a className="Nav" href="/forum">Forum</a>
+                            <a className="Nav" href="/pricing">Pricing</a>
+                            <a className="Nav" href="/dashboard">Dashboard</a>
+                            <a className="Nav" href="/forum">Forum</a>
                         </div>
                         <hr className="collapse-line" />
                         {sessionStorage.getItem('username') !== null && sessionStorage.getItem('username').includes('') === true ? <NavProfile/>
-                         : <Button className="nav-btn sign-btn" href="/register-login" type="submit">Sign In</Button>}
+                         : <Button variant="default" className="nav-btn sign-btn" href="/register-login" type="submit"><h2 className="btn-txt">Sign In</h2></Button>}
                     </Navbar.Collapse>
                 </Navbar>
                 </div>

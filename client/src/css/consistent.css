@@ -7,7 +7,9 @@
   width: 110px;
 }
 .nav-contain {
+  position: relative;
   margin: auto;
+  right: 2px;
 }
 .Nav {
   position: relative;
@@ -29,6 +31,11 @@
 }
 .sign-btn:hover {
   background-color: #c42e17;
+}
+.btn-txt {
+  position: relative;
+  color: white;
+  font-size: 20px;
 }
 .profile-btn {
   display: flex;

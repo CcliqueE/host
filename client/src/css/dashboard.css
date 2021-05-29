@@ -1,16 +1,107 @@
-.dashboard-contain {
+.nav-bar-contain {
   position: relative;
-  top: 100px;
-  max-width: 1500px;
+  max-width: 1000px;
   margin: auto;
-  margin-bottom: 200px;
-  height: 650px;
-  border-style: solid;
+  left: 0px;
+  margin-top: 100px;
   border-radius: 5px;
+  box-shadow: 0 0 10px 0px rgb(224, 224, 224);
 }
-.side-nav-burger {
+.nav-bar-pills {
   position: relative;
-  margin-top: 10px;
-  margin-left: 15px;
-  margin-bottom: 10px;
+  left: -26px;
+  width: 1000px;
+  border-radius: 5px;
+  background-color: white;
+}
+.pill-1 {
+  width: 40px;
+}
+.pill-2 {
+}
+.pill-3 {
+  width: 40px;
+}
+.nav-pages {
+  display: flex;
+  position: relative;
+  height: 700px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+  box-shadow: 0 -20px 30px -40px;
+}
+.server-create-btn {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  margin: auto;
+  border-style: solid;
+  border-color: rgb(0, 153, 0);
+  border-radius: 20px;
+  border-width: 2px;
+  background-color: rgb(0, 177, 0);
+  box-shadow: inset 0 0 10px 0px rgb(0, 153, 0);
+}
+.server-create-btn:hover {
+  background-color: rgb(0, 153, 0);
+  border-color: rgb(0, 153, 0);
+}
+.server-create-btn-text {
+  position: relative;
+  bottom: 2px;
+  color: white;
+}
+.server-subtext {
+  position: relative;
+  top: 30px;
+  color: rgb(202, 201, 201);
+  text-shadow: 0 0 3px rgb(201, 201, 201);
+}
+.server-creation-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
+}
+.server-creation-background {
+  display: flex;
+  position: absolute;
+  width: 2000px;
+  height: 1180px;
+  top: 0;
+  opacity: 50%;
+  background-color: black;
+  z-index: 1;
+}
+.server-creation-div {
+  position: absolute;
+  width: 1100px;
+  height: 650px;
+  bottom: 150px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 2;
+}
+.server-creation-btn {
+  position: absolute;
+  width: 100px;
+  height: 38px;
+  top: 595px;
+  left: 980px;
+  border-radius: 5px;
+  background-color: rgb(23, 23, 255);
+}
+.server-creation-btn-text {
+  position: relative;
+  bottom: 1px;
+  font-size: 20px;
+  color: rgb(228, 228, 228);
+}
+.server-creation-btn-close {
+  position: absolute;
+  top: 3px;
+  left: 1051px;
 }
