@@ -19,7 +19,7 @@ class SignIn extends React.Component {
             passconfirm: '',
             show: true,
             taken: Boolean,
-            pass: Boolean
+            pass: Boolean,
         }
 
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -230,8 +230,6 @@ class SignIn extends React.Component {
                 </Form.Row>
                 </Form>
             </div>
-            
-            
 
             <Footer/>
         </div>

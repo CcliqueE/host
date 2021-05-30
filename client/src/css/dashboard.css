@@ -58,7 +58,6 @@
   position: relative;
   top: 30px;
   color: rgb(202, 201, 201);
-  text-shadow: 0 0 3px rgb(201, 201, 201);
 }
 .server-creation-contain {
   display: flex;
@@ -68,16 +67,16 @@
 }
 .server-creation-background {
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 2000px;
-  height: 1180px;
+  height: 1500px;
   top: 0;
   opacity: 50%;
   background-color: black;
   z-index: 1;
 }
 .server-creation-div {
-  position: absolute;
+  position: fixed;
   width: 1100px;
   height: 650px;
   bottom: 150px;
@@ -104,4 +103,5 @@
   position: absolute;
   top: 3px;
   left: 1051px;
+  border-radius: 8px;
 }

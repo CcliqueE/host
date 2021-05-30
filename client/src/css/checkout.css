@@ -1,0 +1,29 @@
+.checkout-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout-background {
+  position: fixed;
+  height: 1500px;
+  width: 100%;
+  top: 0;
+  background-color: black;
+  opacity: 50%;
+  z-index: 1;
+}
+.checkout-session {
+  position: fixed;
+  width: 1300px;
+  height: 800px;
+  top: 100px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 2;
+}
+.checkout-close {
+  position: relative;
+  top: 3px;
+  left: 1246px;
+  border-radius: 8px;
+}

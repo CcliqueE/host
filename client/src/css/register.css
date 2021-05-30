@@ -7,6 +7,7 @@
   height: 90px;
   width: 399px;
   text-align: center;
+  box-shadow: 0 0 7px 0 rgb(216, 216, 216);
   transition: top 1.5s, left 1s, width 1s;
 }
 .alert-head {
