@@ -25,11 +25,12 @@ class SignIn extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this)
         this.registerSubmit = this.registerSubmit.bind(this);
         this.loginSubmit = this.loginSubmit.bind(this)
+        this.customerCreate = this.customerCreate.bind(this)
     }
 
     handleInputChange = e => {
         this.setState({
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     };
 
@@ -53,7 +54,7 @@ class SignIn extends React.Component {
             .then(this.setState({taken: false}))
             .catch(err => {
                 console.error(parseInt(err));
-                this.setState({taken: true})
+                this.setState({ taken: true })
             });
         } else {
             window.location.reload()
@@ -61,21 +62,23 @@ class SignIn extends React.Component {
     }
 
     loginSubmit(event) {
-        if (this.state.loginuser !== '' ||  this.state.loginpass !== '') {
+        if (this.state.loginemail !== '' || this.state.loginpass !== '' || event.charCode === 13) {
+            
             event.preventDefault()
             const login = {
                 email: this.state.loginemail,
-                username: this.state.loginuser,
                 password: this.state.loginpass
             }
             axios
             .post('http://localhost:5000/login', login)
+            .then((res) => {sessionStorage.setItem('user_id', res.data)})
             .then(() => {window.location = '/dashboard'})
-            .then(() => {sessionStorage.setItem('username', this.state.loginuser)})
             .catch(err => {
+                event.preventDefault()
                 console.error(err)
-                this.setState({pass: false})
+                this.setState({ pass: false })
             })
+        
         } else {
             event.preventDefault()
         }
@@ -99,7 +102,7 @@ class SignIn extends React.Component {
                 <Form.Row>
                     <Col className="sign-div" xs={12} md={6}>
                         <Form.Group>
-                            <h1>Sign Up</h1>
+                            <h1>Sign Up {this.state.username_two}</h1>
                             <Form.Label>Email address</Form.Label>
                             {this.state.taken === true ? 
                             <div className="taken-alert">
@@ -189,17 +192,7 @@ class SignIn extends React.Component {
                             placeholder="Email"
                             value={this.state.loginemail}
                             onChange={this.handleInputChange}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                        <Form.Label>Username</Form.Label>
-                            <Form.Control 
-                            name="loginuser"
-                            className="form" 
-                            type="text" 
-                            placeholder="Username"
-                            value={this.state.loginusername}
-                            onChange={this.handleInputChange}
+                            
                             />
                         </Form.Group>
                         <Form.Group >
@@ -210,7 +203,8 @@ class SignIn extends React.Component {
                             type="password" 
                             placeholder="Password"
                             value={this.state.loginpass}
-                            onChange={this.handleInputChange}/>
+                            onChange={this.handleInputChange}
+                            />
                         </Form.Group>
                         <Form.Group className="box" controlId="box2">
                             <Form.Check type="checkbox" label="Remember Me" />
@@ -221,6 +215,7 @@ class SignIn extends React.Component {
                         variant="primary" 
                         type="submit"
                         value="Submit"
+                        onKeyPress={this.loginSubmit}
                         onClick={this.loginSubmit}
                         >
                             Submit

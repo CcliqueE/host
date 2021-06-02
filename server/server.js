@@ -3,6 +3,7 @@ const app = express()
 const pool = require('./db')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+const { Query } = require('pg')
 const stripe = require('stripe')('sk_test_51IvyUYA2kpe3q8neCFvqVDg4M3bFovtBmOgG3dt8dYXLhgwnvjMkez7ZMhO8LtyWx2caP68TR8O8QRKJLDJd5vWA00wOT3e3xs');
 
 app.use(cors())
@@ -42,26 +43,41 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     const query = await pool.query('SELECT email FROM users WHERE email = $1', [req.body.email])
     const query_two = await pool.query('SELECT password FROM users WHERE email = $1', [req.body.email])
-    const query_three = await pool.query('SELECT username FROM users WHERE email = $1', [req.body.email])
     const exist = ((query.rows).map(({ email }) => email)).toString()
     const compare = ((query_two.rows).map(({ password }) => password)).toString()
-    const username = ((query_three.rows).map(({ username }) => username)).toString()
-    console.log(username)
+
+    const query_yo = await pool.query('SELECT id FROM users WHERE email = $1', [req.body.email])
+    const boo = ((query_yo.rows).map(({ id }) => id)).toString()
+    res.set('user_id', boo)
+    const user = res.getHeader('user_id')
+    console.log(exist)
 
     if (exist !== req.body.email) {
         return res.status(400).send('User does not exist with this email')
-    } else if (username !== req.body.username) {
-        return res.status(401).send('User does not exist with this username') 
     } else {
         try {
             if (await bcrypt.compare(req.body.password, compare)) {
-                res.status(201).send('Login Successful')
+                res.status(201).send(user)
             } else {
                 res.status(404).send("User with this password doesn't exist")
             }
         } catch(err) {
             res.status(500).send(err.message)
         }
+    }
+})
+
+//get username
+
+app.post('/username', async (req, res) => {
+    const query = await pool.query('SELECT username FROM users WHERE id = $1', [req.body.user_id])
+    const username = ((query.rows).map(({ username }) => username)).toString()
+    console.log(username)
+    console.log(query.rows)
+    try {
+        res.status(201).send(username)
+    } catch (err) {
+        res.status(500).send(err.message)
     }
 })
 
@@ -112,27 +128,42 @@ app.post('/create-product/price', async (req, res) => {
     }
 })
 
-//checkout session
+//create a customer
 
+app.post('/create-customer', async (req, res) => {
+    const query = await pool.query('SELECT email FROM users WHERE id = $1', [req.body.user_id])
+    const customer_email = ((query.rows).map(({ email }) => email)).toString()
+    console.log(customer_email)
 
+    const customer = await stripe.customers.create({ 
+        email: customer_email
+    })
 
-//create a subsciption
-
-app.post('/create-subscription', async (req, res) => {
-    const customer_email = await pool.query('SELECT email FROM users WHERE username = $1', [req.body.username])
     try{
-        await stripe.customers.create({ email: customer_email });
-        res.status(201).send('Customer Created');
-        console.log(res)
+        res.status(201).send(customer.id);
     } catch (err) {
         res.status(500).send(err.message)
     }
-  // save the customer.id as stripeCustomerId
-  // in your database.
-
-  
 });
 
-//only allow certain people to access this piece of the website
+//create a subscription
+
+app.post('/create-subscription', async (req, res) => {
+    const subscription = await stripe.subscriptions.create({
+        customer: req.body.customer_id,
+        items: [{
+            price: req.body.price_id
+        }],
+        payment_behavior: 'default_incomplete',
+        expand: ['latest_invoice.payment_intent']
+    })
+    console.log(subscription.payment_behavior)
+    console.log(subscription.expand)
+    try {
+        res.send(subscription.id + ' ' + subscription.latest_invoice.payment_intent.client_secret)
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+})
 
 app.listen(5000, () => {console.log('server has started on port 5000')})
