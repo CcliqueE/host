@@ -38,14 +38,18 @@ function Profile() {
                     </Nav>
                     </Col>
                     <Col >
+                    <div className="nav-card">
                     <Tab.Content>
+                        
                         <Tab.Pane eventKey="first">
                             <ProEdit/>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
                             <Settings/>
                         </Tab.Pane>
+                        
                     </Tab.Content>
+                    </div>
                     </Col>
                 </Row>
             </Tab.Container>

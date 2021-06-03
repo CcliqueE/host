@@ -1,4 +1,4 @@
-import '../css/settings.css';
+import '../css/pronav.css';
 import React from 'react'
 
 class Settings extends React.Component {
@@ -11,7 +11,7 @@ class Settings extends React.Component {
     return (
         <div className="settings-contain">
 
-            <div className="settings-card">
+            <div>
                 <h3>Prolfile Settings Apparently -change password -change card </h3>
             </div>
 

@@ -128,42 +128,111 @@ app.post('/create-product/price', async (req, res) => {
     }
 })
 
-//create a customer
+//create a subscription
 
-app.post('/create-customer', async (req, res) => {
+app.post('/create-subscription', async (req, res) => {
     const query = await pool.query('SELECT email FROM users WHERE id = $1', [req.body.user_id])
     const customer_email = ((query.rows).map(({ email }) => email)).toString()
-    console.log(customer_email)
 
+    const exist = await pool.query('SELECT email FROM customers WHERE email = $1', [customer_email])
+    const exist_email = ((exist.rows).map(({ email }) => email)).toString()
+
+    if (exist_email !== ''){
+        res.status(400).send('Customer with this email already exists')
+    } else {
     const customer = await stripe.customers.create({ 
         email: customer_email
     })
 
-    try{
-        res.status(201).send(customer.id);
-    } catch (err) {
-        res.status(500).send(err.message)
-    }
-});
+    const token = await stripe.tokens.create(
+        {card: {
+        name: req.body.name,
+        number: req.body.cardNumber,
+        cvc: req.body.cvc,
+        exp_month: req.body.exp_month,
+        //two digit number
+        exp_year: req.body.exp_year
+        //two digit number
+        }}
+    )
 
-//create a subscription
+    const card = await stripe.customers.createSource(
+        customer.id,
+        {source: token.id}
+    )
 
-app.post('/create-subscription', async (req, res) => {
     const subscription = await stripe.subscriptions.create({
-        customer: req.body.customer_id,
+        customer: customer.id,
         items: [{
             price: req.body.price_id
         }],
         payment_behavior: 'default_incomplete',
         expand: ['latest_invoice.payment_intent']
     })
-    console.log(subscription.payment_behavior)
-    console.log(subscription.expand)
-    try {
-        res.send(subscription.id + ' ' + subscription.latest_invoice.payment_intent.client_secret)
+
+    const paymentIntent = await stripe.paymentIntents.confirm(
+        subscription.latest_invoice.payment_intent.id,
+        {payment_method: card.id}
+    )
+
+    const insert = [
+        customer_email, 
+        subscription.customer, 
+        subscription.id,
+        paymentIntent.payment_method,
+        subscription.plan.product,
+        paymentIntent.amount_received,
+        paymentIntent.status
+    ]
+    
+    console.log(paymentIntent.status)
+
+    try{
+        const createCustomer = await pool.query(
+            'INSERT INTO customers (email, customer_id, sub_id, card_id, product_id, price, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', insert)
+        res.json(createCustomer.rows)
     } catch (err) {
         res.status(500).send(err.message)
     }
+}
+});
+
+//delete subscription
+
+app.post('/cancel-subscription', async (req, res) => {
+    const cancel_col = await pool.query("UPDATE customers SET status = 'cancelled' WHERE sub_id = $1", [req.body.sub_id])
+
+    const delete_sub = await stripe.subscriptions.update(
+        req.body.sub_id,
+        {cancel_at_period_end: true}
+    )
+
+    console.log(delete_sub)
+    try {
+        res.status(201).send('user deleted')
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+
 })
+
+app.post('/delete-expired', async (req, res) => {
+    const check = await pool.query("SELECT status FROM customers WHERE status = 'cancelled'")
+    const exist_check = ((exist.rows).map(({ email }) => email)).toString()
+    if (exist_check !== '') {
+      const delete_col = await pool.query("DELETE FROM customers WHERE date = DATE(NOW() - INTERVAL '1' MONTH)")  
+    }
+    
+
+    console.log(check)
+    try {
+        res.status(201).send('checked')
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+
+})
+
+//change default payment
 
 app.listen(5000, () => {console.log('server has started on port 5000')})

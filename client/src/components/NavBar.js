@@ -16,11 +16,19 @@ export default class NavBar extends React.Component {
         }
         
         this.redirect = this.redirect.bind(this)
+        this.redirect_two = this.redirect_two.bind(this)
     }
 
-    redirect(event) {
+    redirect() {
+        if (sessionStorage.getItem('user_id') === null) {
+            window.location = '/register-login'
+        } else {
+            window.location = '/dashboard'
+        }
+    }
+
+    redirect_two() {
         window.location = '/profile'
-        
     }
 
     componentDidMount() {
@@ -54,12 +62,12 @@ export default class NavBar extends React.Component {
                     <Navbar.Collapse className="justify-content-end" bsPrefix="navbar-collapse" id="collapse">
                         <div className="nav-contain">
                             <a className="Nav" href="/pricing">Pricing</a>
-                            <a className="Nav" href="/dashboard">Dashboard</a>
+                            <button onClick={this.redirect} className="Nav dashboard-link">Dashboard</button>
                             <a className="Nav" href="/forum">Forum</a>
                         </div>
                         <hr className="collapse-line" />
                         {sessionStorage.getItem('user_id') !== null && sessionStorage.getItem('user_id').includes('') === true ? 
-                        <div onClick={this.redirect} className="profile-btn" >
+                        <div onClick={this.redirect_two} className="profile-btn" >
                             <img className="profile-img" src={ProfileLogo} alt="profile"/>
                             <h3 className="profile-name">{this.state.username}</h3>
                         </div >

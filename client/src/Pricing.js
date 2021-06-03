@@ -9,6 +9,7 @@ import LogoInverse from './img/rust-logo-inverted.png'
 import { IoCheckmarkDone } from "react-icons/io5"
 import { IoMdClose } from 'react-icons/io'
 import { BsX } from 'react-icons/bs'
+import { FaCcDiscover, FaCcMastercard, FaCcStripe, FaCcVisa, FaCcAmex } from 'react-icons/fa'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { Card, CardColumns, Button, Form, Col, Row } from 'react-bootstrap'
 
@@ -19,13 +20,28 @@ class Pricing extends React.Component {
             sub_show_one: false,
             sub_show_two: false,
             sub_show_three: false,
+            cardHolder: '',
             cardNumber: '',
-            cardHolder: ''
+            exp_month: '',
+            exp_year: '',
+            cvc: '',
+            cardHolder_two: '',
+            cardNumber_two: '',
+            exp_month_two: '',
+            exp_year_two: '',
+            cvc_two: '',
+            cardHolder_three: '',
+            cardNumber_three: '',
+            exp_month_three: '',
+            exp_year_three: '',
+            cvc_three: ''
         }
         this.session_Subsciption_one = this.session_Subsciption_one.bind(this)
         this.session_Subsciption_two = this.session_Subsciption_two.bind(this)
         this.session_Subsciption_three = this.session_Subsciption_three.bind(this)
-        this.customerCreate = this.customerCreate.bind(this)
+        this.createSubscription_one = this.createSubscription_one.bind(this)
+        this.createSubscription_two = this.createSubscription_two.bind(this)
+        this.createSubscription_three = this.createSubscription_three.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
     }
     
@@ -37,44 +53,101 @@ class Pricing extends React.Component {
 
     session_Subsciption_one(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false) {
+        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
             this.setState({ sub_show_one: true })
         } else if (this.state.sub_show_one === true) {
             this.setState({ sub_show_one: false })
             window.location.reload()
+        } else {
+            window.location = '/register-login'
         }
     }
 
     session_Subsciption_two(event) {
         event.preventDefault()
-        if (this.state.sub_show_two === false) {
-            this.setState({ sub_show_two: true })
-        } else if (this.state.sub_show_two === true) {
-            this.setState({ sub_show_two: false })
+        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
+            this.setState({ sub_show_one: true })
+        } else if (this.state.sub_show_one === true) {
+            this.setState({ sub_show_one: false })
             window.location.reload()
+        } else {
+            window.location = '/register-login'
         }
     }
 
     session_Subsciption_three(event) {
         event.preventDefault()
-        if (this.state.sub_show_three === false) {
-            this.setState({ sub_show_three: true })
-        } else if (this.state.sub_show_three === true) {
-            this.setState({ sub_show_three: false })
+        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
+            this.setState({ sub_show_one: true })
+        } else if (this.state.sub_show_one === true) {
+            this.setState({ sub_show_one: false })
             window.location.reload()
+        } else {
+            window.location = '/register-login'
         }
     }
 
-    customerCreate(event) {
+    createSubscription_one(event) {
         event.preventDefault()
-        if (sessionStorage.getItem('user_id') !== null) {
-            const session_id = {
-                user_id: sessionStorage.getItem('user_id')
-            }
-            axios
-            .post('http://localhost:5000/create-subscription', session_id)
-            .then((res) => { console.log(res) })
+        // if (sessionStorage.getItem('user_id') !== null) {}
+        
+        const session_id = {
+            user_id: 5,
+            name: this.state.cardHolder,
+            cardNumber: this.state.cardNumber,
+            exp_month: this.state.exp_month,
+            exp_year: this.state.exp_year,
+            cvc: this.state.cvc,
+            price_id: 'price_1IwNtYA2kpe3q8neItkjs5mO'
         }
+        axios
+        .post('http://localhost:5000/create-subscription', session_id)
+        .then((res) => { console.log(res.data) })
+        .catch(err => {
+            console.error(err)
+        })
+    }
+
+    createSubscription_two(event) {
+        event.preventDefault()
+        // if (sessionStorage.getItem('user_id') !== null) {}
+        
+        const session_id = {
+            user_id: 6,
+            name: this.state.cardHolder_two,
+            cardNumber: this.state.cardNumber_two,
+            exp_month: this.state.exp_month_two,
+            exp_year: this.state.exp_year_two,
+            cvc: this.state.cvc_two,
+            price_id: 'price_1IwNt1A2kpe3q8netS3EwHGi'
+        }
+        axios
+        .post('http://localhost:5000/create-subscription', session_id)
+        .then((res) => { console.log(res.data) })
+        .catch(err => {
+            console.error(err)
+        })
+    }
+
+    createSubscription_three(event) {
+        event.preventDefault()
+        // if (sessionStorage.getItem('user_id') !== null) {}
+        
+        const session_id = {
+            user_id: 4,
+            name: this.state.cardHolder_three,
+            cardNumber: this.state.cardNumber_three,
+            exp_month: this.state.exp_month_three,
+            exp_year: this.state.exp_year_three,
+            cvc: this.state.cvc_three,
+            price_id: 'price_1IwNrrA2kpe3q8neoXohgWAf'
+        }
+        axios
+        .post('http://localhost:5000/create-subscription', session_id)
+        .then((res) => { console.log(res.data.status) })
+        .catch(err => {
+            console.error(err)
+        })
     }
 
     render() {
@@ -166,7 +239,6 @@ class Pricing extends React.Component {
                             <Form.Control
                             name="cardHolder"
                             className="form" 
-                            
                             placeholder="Joe Smith" 
                             value={this.state.cardHolder}
                             onChange={this.handleInputChange}/>
@@ -176,42 +248,51 @@ class Pricing extends React.Component {
                             <Form.Control
                             name="cardNumber"
                             className="form" 
-                            
                             placeholder="7777-7777-7777-7777" 
                             value={this.state.cardNumber}
                             onChange={this.handleInputChange}/>
                         </Form.Group>
-                        <Row>
-                            <Col>
+                        <Row className="expire-date">
+                            <Col sm={2}>
                                 <Form.Group>
-                                    <Form.Label>Zip Code</Form.Label>
+                                    <Form.Label className="form-expire">Expire Date</Form.Label>
                                     <Form.Control
-                                    name="cardNumber"
+                                    name="exp_month"
                                     className="form" 
-                                    
-                                    placeholder="Zip Code" 
-                                    value={this.state.cardNumber}
+                                    placeholder="03" 
+                                    value={this.state.exp_month}
                                     onChange={this.handleInputChange}/>
                                 </Form.Group>
                             </Col>
-                            <Col sm={4}>
+                            <h5 className="slash">/</h5>
+                            <Col sm={2}>
                                 <Form.Group>
+                                    <Form.Control
+                                    name="exp_year"
+                                    className="form expire-year" 
+                                    placeholder="23"
+                                    value={this.state.exp_year}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            <Col sm={3}>
+                                <Form.Group className="form-cvc">
                                     <Form.Label>Security</Form.Label>
                                     <Form.Control
-                                    name="cardNumber"
+                                    name="cvc"
                                     className="form" 
-                                    
                                     placeholder="155" 
-                                    value={this.state.cardNumber}
+                                    value={this.state.cvc}
                                     onChange={this.handleInputChange}/>
                                 </Form.Group>
                             </Col>
                             
                         </Row>
-                        <Button variant="default" className="checkout-btn">
+                        <Button variant="default" className="checkout-btn" onClick={this.createSubscription_one}>
                             <h4 className="checkout-btn-text">Subscribe</h4>
                         </Button>
                         <h4 className="checkout-price-text2">Your subscription will start now</h4>
+                        <FaCcDiscover className="card-icons" size={50}/><FaCcMastercard className="card-icons" size={50}/><FaCcStripe className="card-icons" size={50}/><FaCcVisa className="card-icons" size={50}/><FaCcAmex className="last-card-icon" size={50}/>
                     </div>
                 </div>
             </div>
@@ -221,11 +302,73 @@ class Pricing extends React.Component {
                 <div className="checkout-background"></div>
                 <div className="checkout-session">
                     <div className="checkout-price">
-                        <h4>$26</h4>
+                        <img className="inverted-logo" alt="logo" src={LogoInverse}/>
+                        <h4 className="checkout-price-text">Monthly Recurring <HiArrowNarrowRight/> $26</h4>
                     </div>
                     <Button onClick={this.session_Subsciption_two} variant="default" className="checkout-close">
                         <BsX size={25}/>
                     </Button>
+                    <div className="form-contain">
+                        <Form.Group>
+                            <Form.Label className="form-title">Card Holder Name</Form.Label>
+                            <Form.Control
+                            name="cardHolder_two"
+                            className="form" 
+                            placeholder="Joe Smith" 
+                            value={this.state.cardHolder_two}
+                            onChange={this.handleInputChange}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-title">Card Number</Form.Label>
+                            <Form.Control
+                            name="cardNumber_two"
+                            className="form" 
+                            placeholder="7777-7777-7777-7777" 
+                            value={this.state.cardNumber_two}
+                            onChange={this.handleInputChange}/>
+                        </Form.Group>
+                        <Row className="expire-date">
+                            <Col sm={2}>
+                                <Form.Group>
+                                    <Form.Label className="form-expire">Expire Date</Form.Label>
+                                    <Form.Control
+                                    name="exp_month_two"
+                                    className="form" 
+                                    placeholder="03" 
+                                    value={this.state.exp_month_two}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            <h5 className="slash">/</h5>
+                            <Col sm={2}>
+                                <Form.Group>
+                                    <Form.Control
+                                    name="exp_year_two"
+                                    className="form expire-year" 
+                                    placeholder="23"
+                                    value={this.state.exp_year_two}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            <Col sm={3}>
+                                <Form.Group className="form-cvc">
+                                    <Form.Label>Security</Form.Label>
+                                    <Form.Control
+                                    name="cvc_two"
+                                    className="form" 
+                                    placeholder="155" 
+                                    value={this.state.cvc_two}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            
+                        </Row>
+                        <Button variant="default" className="checkout-btn" onClick={this.createSubscription_two}>
+                            <h4 className="checkout-btn-text">Subscribe</h4>
+                        </Button>
+                        <h4 className="checkout-price-text2">Your subscription will start now</h4>
+                        <FaCcDiscover className="card-icons" size={50}/><FaCcMastercard className="card-icons" size={50}/><FaCcStripe className="card-icons" size={50}/><FaCcVisa className="card-icons" size={50}/><FaCcAmex className="last-card-icon" size={50}/>
+                    </div>
                 </div>
             </div>
              : <div></div>}
@@ -234,11 +377,73 @@ class Pricing extends React.Component {
                 <div className="checkout-background"></div>
                 <div className="checkout-session">
                     <div className="checkout-price">
-                        <h4>$36</h4>
+                        <img className="inverted-logo" alt="logo" src={LogoInverse}/>
+                        <h4 className="checkout-price-text">Monthly Recurring <HiArrowNarrowRight/> $36</h4>
                     </div>
                     <Button onClick={this.session_Subsciption_three} variant="default" className="checkout-close">
                         <BsX size={25}/>
                     </Button>
+                    <div className="form-contain">
+                        <Form.Group>
+                            <Form.Label className="form-title">Card Holder Name</Form.Label>
+                            <Form.Control
+                            name="cardHolder_three"
+                            className="form" 
+                            placeholder="Joe Smith" 
+                            value={this.state.cardHolder_three}
+                            onChange={this.handleInputChange}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-title">Card Number</Form.Label>
+                            <Form.Control
+                            name="cardNumber_three"
+                            className="form" 
+                            placeholder="7777-7777-7777-7777" 
+                            value={this.state.cardNumber_three}
+                            onChange={this.handleInputChange}/>
+                        </Form.Group>
+                        <Row className="expire-date">
+                            <Col sm={2}>
+                                <Form.Group>
+                                    <Form.Label className="form-expire">Expire Date</Form.Label>
+                                    <Form.Control
+                                    name="exp_month_three"
+                                    className="form" 
+                                    placeholder="03" 
+                                    value={this.state.exp_month_three}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            <h5 className="slash">/</h5>
+                            <Col sm={2}>
+                                <Form.Group>
+                                    <Form.Control
+                                    name="exp_year_three"
+                                    className="form expire-year" 
+                                    placeholder="23"
+                                    value={this.state.exp_year_three}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            <Col sm={3}>
+                                <Form.Group className="form-cvc">
+                                    <Form.Label>Security</Form.Label>
+                                    <Form.Control
+                                    name="cvc_three"
+                                    className="form" 
+                                    placeholder="155" 
+                                    value={this.state.cvc_three}
+                                    onChange={this.handleInputChange}/>
+                                </Form.Group>
+                            </Col>
+                            
+                        </Row>
+                        <Button variant="default" className="checkout-btn" onClick={this.createSubscription_three}>
+                            <h4 className="checkout-btn-text">Subscribe</h4>
+                        </Button>
+                        <h4 className="checkout-price-text2">Your subscription will start now</h4>
+                        <FaCcDiscover className="card-icons" size={50}/><FaCcMastercard className="card-icons" size={50}/><FaCcStripe className="card-icons" size={50}/><FaCcVisa className="card-icons" size={50}/><FaCcAmex className="last-card-icon" size={50}/>
+                    </div>
                 </div>
             </div>
              : <div></div>}

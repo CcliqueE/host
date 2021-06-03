@@ -55,7 +55,10 @@
   position: relative;
   height: 40px;
   margin-right: 0;
-  background-color: rgb(40, 40, 255);
+  background-color: #cd402a;
+}
+.choose-btn:hover {
+  background-color: #ce240a;
 }
 .choose-btn-txt {
   position: relative;

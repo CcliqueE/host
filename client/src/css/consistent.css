@@ -9,7 +9,7 @@
 .nav-contain {
   position: relative;
   margin: auto;
-  right: 2px;
+  right: 58px;
 }
 .Nav {
   position: relative;
@@ -20,6 +20,11 @@
 .Nav:hover {
   text-decoration: none;
   color: lightgray;
+}
+.dashboard-link {
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
 }
 .sign-btn {
   background-color: #cd402a;
@@ -39,7 +44,7 @@
 }
 .profile-btn {
   display: flex;
-  position: relative;
+  position: absolute;
   width: auto;
   height: 35px;
   margin-left: 30px;

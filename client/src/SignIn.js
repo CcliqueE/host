@@ -25,7 +25,6 @@ class SignIn extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this)
         this.registerSubmit = this.registerSubmit.bind(this);
         this.loginSubmit = this.loginSubmit.bind(this)
-        this.customerCreate = this.customerCreate.bind(this)
     }
 
     handleInputChange = e => {

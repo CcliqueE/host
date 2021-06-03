@@ -62,13 +62,37 @@
 .form-contain {
   position: relative;
   margin: auto;
-  top: 190px;
+  top: 120px;
   width: 80%;
 }
 .form-title {
   position: relative;
   margin-left: 10px;
   float: left;
+}
+.expire-date {
+  position: relative;
+  left: 90px;
+}
+.form-expire {
+  position: relative;
+  width: 100px;
+  left: 28px;
+}
+.form-cvc {
+  position: relative;
+  left: 0px;
+}
+.expire-year {
+  position: relative;
+  top: 32px;
+  left: -9px;
+}
+.slash {
+  position: relative;
+  width: 5px;
+  top: 38px;
+  left: -9px;
 }
 .form:focus {
   box-shadow: 0 0 4px 0pt lightblue;
@@ -91,4 +115,13 @@
   position: relative;
   top: 2px;
   color: rgb(238, 238, 238);
+}
+.card-icons {
+  position: relative;
+  margin-right: 15px;
+  top: 30px;
+}
+.last-card-icon {
+  position: relative;
+  top: 30px;
 }

@@ -1,4 +1,4 @@
-import '../css/proedit.css';
+import '../css/pronav.css';
 import React from 'react'
 
 class ProEdit extends React.Component {
@@ -11,7 +11,7 @@ class ProEdit extends React.Component {
     return (
         <div className="pro-edit-contain">
 
-            <div className="pro-edit-card">
+            <div>
                 <h3>Profile idk yet -change name maybe</h3>
             </div>
 
