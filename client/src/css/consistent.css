@@ -28,7 +28,7 @@
 }
 .sign-btn {
   background-color: #cd402a;
-  position: relative;
+  position: absolute;
   width: 130px;
   height: 40px;
   border: 0;
@@ -56,6 +56,15 @@
 }
 .profile-btn:hover {
   background-color: rgb(59, 59, 59);
+}
+.sub-crown {
+  position: absolute;
+  width: 20px;
+  height: auto;
+  top: -9px;
+  left: -1.7px;
+  right: 0;
+  transform: rotate(-10deg);
 }
 .profile-img {
   position: absolute;

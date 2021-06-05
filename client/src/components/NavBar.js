@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Logo from '../img/rust-logo.png'
+import Crown from '../img/subscribed-crown.png'
 import ProfileLogo from '../img/user-profile-final.png'
 import '../css/consistent.css'
 
@@ -11,7 +12,7 @@ export default class NavBar extends React.Component {
     constructor (props){
         super(props)
         this.state = {
-            id: sessionStorage.getItem('user_id'),
+            id: sessionStorage.getItem('zkShrinks'),
             username: ''
         }
         
@@ -20,7 +21,7 @@ export default class NavBar extends React.Component {
     }
 
     redirect() {
-        if (sessionStorage.getItem('user_id') === null) {
+        if (sessionStorage.getItem('zkShrinks') === null) {
             window.location = '/register-login'
         } else {
             window.location = '/dashboard'
@@ -32,7 +33,7 @@ export default class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        if (sessionStorage.getItem('user_id') !== null) {
+        if (sessionStorage.getItem('zkShrinks') !== null) {
         const id = {
             user_id: this.state.id
         }
@@ -66,8 +67,11 @@ export default class NavBar extends React.Component {
                             <a className="Nav" href="/forum">Forum</a>
                         </div>
                         <hr className="collapse-line" />
-                        {sessionStorage.getItem('user_id') !== null && sessionStorage.getItem('user_id').includes('') === true ? 
+                        
+                        
+                        {sessionStorage.getItem('zkShrinks') !== null && sessionStorage.getItem('zkShrinks').includes('') === true ? 
                         <div onClick={this.redirect_two} className="profile-btn" >
+                            {sessionStorage.getItem('koopa') !== 'null' ? <img className="sub-crown" src={Crown} alt="crown"/> : <div></div>}
                             <img className="profile-img" src={ProfileLogo} alt="profile"/>
                             <h3 className="profile-name">{this.state.username}</h3>
                         </div >

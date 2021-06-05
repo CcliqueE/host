@@ -65,6 +65,11 @@
   font-size: 20px;
   color: white;
 }
+.already-error-contain {
+  position: absolute;
+  width: 400px;
+  top: 500px;
+}
 
 @media (max-width: 765px) {
   .pricing-cards {

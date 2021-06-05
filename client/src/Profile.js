@@ -9,7 +9,21 @@ import ProfileLogo from './img/user-profile-final.png'
 import { HiOutlinePencil } from 'react-icons/hi'
 import { Tab, Row, Col, Nav, Figure } from 'react-bootstrap'
  
-function Profile() {
+class Profile extends React.Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+
+    componentDidMount() {
+        if (sessionStorage.getItem('zkShrinks') === null) {
+            window.location = '/register-login'
+        }
+    }
+
+    render(){
     return (
         <div>
             <NavBar/>
@@ -57,6 +71,8 @@ function Profile() {
             <Footer/>
         </div>
     )
+    }
 }
+
 
 export default Profile

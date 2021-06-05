@@ -32,6 +32,7 @@ class NavProfile extends React.Component {
         return (
             <div>
                 <div className="profile-btn" onClick={this.redirect}>
+                    
                     <img className="profile-img" src={ProfileLogo} alt="profile"/>
                     <h3 className="profile-name">{this.state.username}</h3>
                     <h5>{this.state.username}</h5>

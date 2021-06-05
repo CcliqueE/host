@@ -10,9 +10,6 @@
   width: 100%;
   bottom: 227px;
   margin-bottom: -40px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(212, 212, 212);
@@ -21,6 +18,277 @@
 .pro-edit-contain {
   position: relative;
 }
+/*  */
 .settings-contain {
   position: relative;
+}
+.add-card-contain {
+  display: flex;
+  position: absolute;
+  height: 170px;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  left: 15px;
+  top: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgb(197, 197, 197);
+}
+.add-card-text {
+  font-size: 18px;
+  color: rgb(104, 104, 104);
+}
+.add-card-btn {
+  margin: auto;
+  width: 130px;
+  height: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff7e6a;
+}
+.add-card-btn:hover {
+  background-color: rgb(240, 240, 240);
+}
+.payment-card {
+  position: absolute;
+  height: 170px;
+  width: 300px;
+  left: 15px;
+  top: 15px;
+  box-shadow: 0 0 5px 0 rgb(197, 197, 197);
+  border-radius: 5px;
+  background: linear-gradient(#ce4631, #ca1b00);
+}
+.carrier {
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}
+.mastercard {
+  position: relative;
+  top: 12px;
+}
+.holder {
+  position: relative;
+  float: right;
+  right: 5px;
+}
+.card-num {
+  position: relative;
+  top: 5px;
+  left: 210px;
+}
+.card-text-contain {
+  display: flex;
+  position: relative;
+  top: 90px;
+  left: -10px;
+  align-items: center;
+}
+.card-arrow {
+  color: rgb(231, 231, 231);
+}
+.card-text {
+  position: relative;
+  color: rgb(226, 226, 226);
+  transition: color 200ms;
+  font-size: 17px;
+}
+.card-text:hover {
+  cursor: pointer;
+  color: rgb(184, 184, 184);
+}
+.cancel-sub:hover {
+  text-decoration: line-through;
+}
+/*  */
+.delete-card-contain {
+  position: absolute;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  top: 137px;
+  right: 10px;
+  border-radius: 15px;
+  transition: box-shadow 500ms, background-color 500ms;
+}
+.delete-card-contain:hover {
+  border-radius: 15px;
+  box-shadow: inset 0 0 5px 2px #921300bd;
+  background-color: #b91901bd;
+  cursor: pointer;
+}
+.delete-card-session-contain {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 203px;
+  left: 254px;
+}
+.delete-card-background {
+  position: absolute;
+  width: 738px;
+  height: 496px;
+  border-radius: 3px;
+  opacity: 50%;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+}
+.delete-card-session {
+  display: flex;
+  position: relative;
+  width: 230px;
+  height: autopx;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 2;
+}
+.delete-card-ques {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: gray;
+  font-size: 17px;
+}
+.delete-card-btn-contain {
+  position: relative;
+  margin-bottom: 15px;
+}
+.delete-card-btn-no {
+  position: relative;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff7e6a;
+  background-color: white;
+}
+.delete-card-btn-yes {
+  position: relative;
+  background-color: rgb(221, 0, 0);
+}
+.delete-card-btn-no:hover {
+  background-color: rgb(218, 218, 218);
+}
+.delete-card-btn-yes:hover {
+  background-color: rgb(207, 0, 0);
+  text-decoration: line-through;
+}
+/*  */
+.chg-plan-contain {
+  position: relative;
+  top: 100px;
+  text-align: center;
+}
+.chg-plan-text {
+  font-size: 19px;
+  width: 180px;
+  margin: auto;
+}
+.chg-plan-text:hover {
+  cursor: pointer;
+  color: gray;
+}
+/*  */
+.update-card-contain {
+  display: flex;
+  position: relative;
+  top: 70px;
+  left: 119px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.update-card-background {
+  position: absolute;
+  width: 738px;
+  height: 496px;
+  border-radius: 3px;
+  opacity: 50%;
+  background-color: black;
+  z-index: 1;
+}
+.update-card-session-contain {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 5px rgb(70, 70, 70);
+  background: linear-gradient(#ff573d, #eb1f00);
+  z-index: 2;
+}
+.update-close {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  border-radius: 3px;
+}
+.update-card-form-contain {
+  margin-top: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.form-expire-two {
+  position: relative;
+  left: 20px;
+  width: 100px;
+}
+.update-card-btn {
+  position: relative;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 17px;
+  box-shadow: 0 0 10px 0 #b31800;
+  background-color: white;
+}
+.update-card-btn:hover {
+  background-color: rgb(226, 226, 226);
+}
+/*  */
+.notsign-error-text-contain {
+  position: absolute;
+  width: 180px;
+  height: 50px;
+  right: 150px;
+  top: 220px;
+  border-radius: 10px;
+  background-color: rgb(255, 106, 106);
+}
+.notsign-error-text {
+  position: relative;
+  top: 12px;
+  left: 10px;
+}
+.notsign-error-excl-contain {
+  position: absolute;
+  width: 25px;
+  height: 50px;
+  left: 0;
+  border-radius: 10px 0 0 10px;
+  background-color: rgb(224, 96, 96);
+}
+.notsign-error-excl {
+  position: relative;
+  top: 5px;
+  font-size: 30px;
+}
+.sign-out-btn {
+  position: absolute;
+  height: 40px;
+  width: 120px;
+  top: 440px;
+  left: 603px;
+  background-color: #cd402a;
+}
+.sign-out-btn:hover {
+  background-color: #ce240a;
+}
+.sign-out-btn-text {
+  font-size: 20px;
+  color: white;
 }

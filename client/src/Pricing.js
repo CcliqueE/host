@@ -20,6 +20,8 @@ class Pricing extends React.Component {
             sub_show_one: false,
             sub_show_two: false,
             sub_show_three: false,
+            alreadySub: false,
+            loading: false,
             cardHolder: '',
             cardNumber: '',
             exp_month: '',
@@ -53,7 +55,9 @@ class Pricing extends React.Component {
 
     session_Subsciption_one(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
+        if (sessionStorage.getItem('koopa') !== 'null') {
+            this.setState({ alreadySub: true })
+        } else if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
             this.setState({ sub_show_one: true })
         } else if (this.state.sub_show_one === true) {
             this.setState({ sub_show_one: false })
@@ -65,7 +69,7 @@ class Pricing extends React.Component {
 
     session_Subsciption_two(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
+        if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
             this.setState({ sub_show_one: true })
         } else if (this.state.sub_show_one === true) {
             this.setState({ sub_show_one: false })
@@ -77,7 +81,7 @@ class Pricing extends React.Component {
 
     session_Subsciption_three(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false && sessionStorage.getItem('user_id') !== null) {
+        if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
             this.setState({ sub_show_one: true })
         } else if (this.state.sub_show_one === true) {
             this.setState({ sub_show_one: false })
@@ -89,10 +93,9 @@ class Pricing extends React.Component {
 
     createSubscription_one(event) {
         event.preventDefault()
-        // if (sessionStorage.getItem('user_id') !== null) {}
-        
+        this.setState({ loading: true })
         const session_id = {
-            user_id: 5,
+            user_id: sessionStorage.getItem('zkShrinks'),
             name: this.state.cardHolder,
             cardNumber: this.state.cardNumber,
             exp_month: this.state.exp_month,
@@ -102,7 +105,11 @@ class Pricing extends React.Component {
         }
         axios
         .post('http://localhost:5000/create-subscription', session_id)
-        .then((res) => { console.log(res.data) })
+        .then((res) => { 
+            sessionStorage.setItem('koopa', res.data[0])
+            sessionStorage.setItem('bMo', res.data[1])
+         })
+        .then((res) => { window.location = '/dashboard' })
         .catch(err => {
             console.error(err)
         })
@@ -110,10 +117,9 @@ class Pricing extends React.Component {
 
     createSubscription_two(event) {
         event.preventDefault()
-        // if (sessionStorage.getItem('user_id') !== null) {}
         
         const session_id = {
-            user_id: 6,
+            user_id: sessionStorage.getItem('zkShrinks'),
             name: this.state.cardHolder_two,
             cardNumber: this.state.cardNumber_two,
             exp_month: this.state.exp_month_two,
@@ -123,7 +129,8 @@ class Pricing extends React.Component {
         }
         axios
         .post('http://localhost:5000/create-subscription', session_id)
-        .then((res) => { console.log(res.data) })
+        .then((res) => { sessionStorage.setItem('koopa', res.data) })
+        .then((res) => { window.location = '/dashboard' })
         .catch(err => {
             console.error(err)
         })
@@ -131,10 +138,9 @@ class Pricing extends React.Component {
 
     createSubscription_three(event) {
         event.preventDefault()
-        // if (sessionStorage.getItem('user_id') !== null) {}
         
         const session_id = {
-            user_id: 4,
+            user_id: sessionStorage.getItem('zkShrinks'),
             name: this.state.cardHolder_three,
             cardNumber: this.state.cardNumber_three,
             exp_month: this.state.exp_month_three,
@@ -144,7 +150,8 @@ class Pricing extends React.Component {
         }
         axios
         .post('http://localhost:5000/create-subscription', session_id)
-        .then((res) => { console.log(res.data.status) })
+        .then((res) => { sessionStorage.setItem('koopa', res.data) })
+        .then((res) => { window.location = '/dashboard' })
         .catch(err => {
             console.error(err)
         })
@@ -175,6 +182,12 @@ class Pricing extends React.Component {
                         <Button onClick={this.session_Subsciption_one} variant="defualt" className="choose-btn tier_one">
                             <h4 className="choose-btn-txt">Purchase</h4>
                         </Button>
+                        {this.state.alreadySub === true ? 
+                        <div className="already-error-contain">
+                            <div className="already-excl-contain"><h4 className="already-excl">!</h4></div>
+                            <h4 className="already-error-text">Already Subscribed</h4>
+                        </div>
+                         : <div></div>}
                     </Card.Body>
                 </Card>
                 <Card className="pricing middle-card">
@@ -289,7 +302,9 @@ class Pricing extends React.Component {
                             
                         </Row>
                         <Button variant="default" className="checkout-btn" onClick={this.createSubscription_one}>
+                            {this.state.loading === false ? 
                             <h4 className="checkout-btn-text">Subscribe</h4>
+                             : <h4 className="checkout-btn-text">Loading...</h4>}
                         </Button>
                         <h4 className="checkout-price-text2">Your subscription will start now</h4>
                         <FaCcDiscover className="card-icons" size={50}/><FaCcMastercard className="card-icons" size={50}/><FaCcStripe className="card-icons" size={50}/><FaCcVisa className="card-icons" size={50}/><FaCcAmex className="last-card-icon" size={50}/>

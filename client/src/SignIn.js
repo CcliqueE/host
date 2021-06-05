@@ -25,6 +25,7 @@ class SignIn extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this)
         this.registerSubmit = this.registerSubmit.bind(this);
         this.loginSubmit = this.loginSubmit.bind(this)
+        // this.checkBox = this.checkBox.bind(this)
     }
 
     handleInputChange = e => {
@@ -59,6 +60,8 @@ class SignIn extends React.Component {
             window.location.reload()
         }
     }
+    
+    
 
     loginSubmit(event) {
         if (this.state.loginemail !== '' || this.state.loginpass !== '' || event.charCode === 13) {
@@ -70,14 +73,25 @@ class SignIn extends React.Component {
             }
             axios
             .post('http://localhost:5000/login', login)
-            .then((res) => {sessionStorage.setItem('user_id', res.data)})
-            .then(() => {window.location = '/dashboard'})
+            .then((res) => { 
+                sessionStorage.setItem('zkShrinks', res.data[0])
+                sessionStorage.setItem('koopa', res.data[1])
+                sessionStorage.setItem('cactus', res.data[2])
+                sessionStorage.setItem('bMo', res.data[3])
+            })
+            .then((res) => { window.location = '/dashboard' })
             .catch(err => {
                 event.preventDefault()
                 console.error(err)
                 this.setState({ pass: false })
             })
-        
+            
+            axios
+            .post('http://localhost:5000/delete-expired')
+            .catch (err => {
+                console.error(err)
+            })
+
         } else {
             event.preventDefault()
         }
@@ -162,9 +176,6 @@ class SignIn extends React.Component {
                         ) : (
                         <div></div>
                         )}
-                        <Form.Group controlId="box1">
-                            <Form.Check className="box" type="checkbox" label="Remember Me" />
-                        </Form.Group>
                         <Button 
                         className="sign-log-btn" 
                         href=''
