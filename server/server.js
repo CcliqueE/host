@@ -243,6 +243,36 @@ app.post('/create-subscription', async (req, res) => {
 }
 });
 
+//update subscription
+
+app.post('/change-subscription', async (req, res) => {
+    const update = await stripe.subscriptions.update(
+        req.body.sub_id,
+        {items: [{price: req.body.price_id}]}
+    )
+
+    const sub = await stripe.subscriptions.retrieve(
+        req.body.sub_id
+    )
+    
+    const del = await stripe.subscriptionItems.del(
+        sub.items.data[0].id
+    )
+
+    const sub_two = await stripe.subscriptions.retrieve(
+        req.body.sub_id
+    )
+
+    const update_col = await pool.query('UPDATE customers SET price = $1 WHERE sub_id = $2', 
+    [sub_two.items.data[0].plan.amount, req.body.sub_id])
+
+    try {
+        res.status(201).send([cancel, update])
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+})
+
 //cancel subscription
 
 app.post('/cancel-subscription', async (req, res) => {
@@ -319,6 +349,20 @@ app.post('/delete-subscription', async (req, res) => {
         res.status(500).send(err.message)
     }
 
+})
+
+//retrieve subscription
+
+app.post('/retrieve-sub', async (req, res) => {
+    const sub = await stripe.subscriptions.retrieve(
+        req.body.sub_id
+    )
+
+    try {
+        res.status(201).send([sub.items.data[0].plan.amount])
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
 })
 
 //retrieve card

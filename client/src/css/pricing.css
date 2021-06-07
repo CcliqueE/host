@@ -1,14 +1,18 @@
 .cards {
+  position: relative;
   max-width: 1200px;
   margin: auto;
+  left: 10px;
 }
 .card {
   position: relative;
   background-color: white;
-  margin-top: 130px;
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgb(226, 226, 226);
   transition: margin-top 500ms;
+}
+.pricing {
+  margin-top: 130px;
+  box-shadow: 0 0 10px 0 rgb(226, 226, 226);
 }
 .middle-card {
   border-radius: 0 0 10px 10px;
@@ -22,7 +26,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -32px;
+  margin-top: -162px;
   top: 2px;
   border-radius: 10px 10px 0 0;
   background-color: rgb(40, 40, 255);
@@ -67,8 +71,48 @@
 }
 .already-error-contain {
   position: absolute;
-  width: 400px;
-  top: 500px;
+  display: flex;
+  width: 250px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  top: 510px;
+  left: 150px;
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(255, 106, 106);
+}
+.already-error-text {
+  position: relative;
+  top: 2px;
+  left: 10px;
+}
+.already-excl-contain {
+  position: absolute;
+  height: 100%;
+  width: 25px;
+  left: 0px;
+  border-radius: 5px 0 0 0;
+  background-color: rgb(224, 96, 96);
+}
+.already-excl {
+  position: relative;
+  top: 0px;
+  font-size: 40px;
+}
+.already-change-contain {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  top: 50px;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  box-shadow: inset 0 5px 15px 2px rgb(214, 33, 33);
+  background-color: rgb(230, 73, 73);
+  transition: background-color 200ms;
+}
+.already-change-contain:hover {
+  background-color: rgb(214, 33, 33);
 }
 
 @media (max-width: 765px) {

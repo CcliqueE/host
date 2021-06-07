@@ -60,6 +60,10 @@
   border-radius: 5px;
   background: linear-gradient(#ce4631, #ca1b00);
 }
+.card-fill {
+  position: relative;
+  top: 15px;
+}
 .carrier {
   position: absolute;
   left: 10px;
@@ -69,20 +73,26 @@
   position: relative;
   top: 12px;
 }
+.american {
+  position: relative;
+  top: 20px;
+}
 .holder {
   position: relative;
   float: right;
-  right: 5px;
+  top: 28px;
+  right: 9px;
 }
 .card-num {
-  position: relative;
+  position: absolute;
   top: 5px;
-  left: 210px;
+  right: 8px;
+  float: right;
 }
 .card-text-contain {
   display: flex;
   position: relative;
-  top: 90px;
+  top: 125px;
   left: -10px;
   align-items: center;
 }
@@ -126,8 +136,8 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  top: 203px;
-  left: 254px;
+  top: 177px;
+  left: 199px;
 }
 .delete-card-background {
   position: absolute;
@@ -141,18 +151,22 @@
 .delete-card-session {
   display: flex;
   position: relative;
-  width: 230px;
+  width: 340px;
   height: autopx;
   text-align: center;
   margin: auto;
   border-radius: 10px;
+  box-shadow: inset 0 0 6px 1px rgb(175, 175, 175);
   background-color: white;
   z-index: 2;
 }
-.delete-card-ques {
+.delete-card-ques-one {
   position: relative;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+}
+.delete-card-ques-two {
+  margin-bottom: 20px;
   color: gray;
   font-size: 17px;
 }
@@ -180,9 +194,94 @@
   text-decoration: line-through;
 }
 /*  */
+.cancel-sub-contain {
+  position: absolute;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  top: 137px;
+  right: 10px;
+  border-radius: 15px;
+  transition: box-shadow 500ms, background-color 500ms;
+}
+.cancel-sub-contain:hover {
+  border-radius: 15px;
+  box-shadow: inset 0 0 5px 2px #921300bd;
+  background-color: #b91901bd;
+  cursor: pointer;
+}
+.cancel-sub-session-contain {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 149px;
+  left: 169px;
+}
+.cancel-sub-background {
+  position: absolute;
+  width: 738px;
+  height: 496px;
+  border-radius: 3px;
+  opacity: 50%;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+}
+.cancel-sub-session {
+  display: flex;
+  position: relative;
+  width: 400px;
+  height: autopx;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px 1px rgb(175, 175, 175);
+  background-color: white;
+  z-index: 2;
+}
+.cancel-sub-ques-one {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.cancel-sub-ques-two {
+  margin-bottom: 20px;
+  color: gray;
+  font-size: 17px;
+}
+.cancel-sub-btn-contain {
+  position: relative;
+  width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.cancel-sub-btn-no {
+  position: relative;
+  width: 150px;
+  margin: auto;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff7e6a;
+  background-color: white;
+}
+.cancel-sub-btn-yes {
+  position: relative;
+  background-color: rgb(221, 0, 0);
+}
+.cancel-sub-btn-no:hover {
+  background-color: rgb(218, 218, 218);
+}
+.cancel-sub-btn-yes:hover {
+  background-color: rgb(207, 0, 0);
+  text-decoration: line-through;
+}
+/*  */
 .chg-plan-contain {
   position: relative;
-  top: 100px;
+  top: 135px;
   text-align: center;
 }
 .chg-plan-text {
@@ -193,6 +292,102 @@
 .chg-plan-text:hover {
   cursor: pointer;
   color: gray;
+}
+/*  */
+.change-plan-contain {
+  position: relative;
+  top: 10px;
+}
+.change-plan-background {
+  position: absolute;
+  width: 738px;
+  height: 496px;
+  top: -10px;
+  border-radius: 3px;
+  opacity: 50%;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+}
+.change-plan-session {
+  position: relative;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0;
+  z-index: 2;
+}
+.change-alert-contain {
+  position: relative;
+  width: 590px;
+  height: 55px;
+  left: 70px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: lightblue;
+}
+.change-alert-text-one {
+  position: relative;
+  width: 500px;
+  right: 5px;
+  margin: auto;
+  font-size: 20px;
+}
+.change-alert-excl-contain-one {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  border-radius: 5px 0 0 5px;
+  background-color: rgb(112, 195, 223);
+}
+.change-alert-excl-contain-two {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  left: 560px;
+  border-radius: 0 5px 5px 0;
+  background-color: rgb(112, 195, 223);
+}
+.change-alert-excl {
+  font-size: 30px;
+}
+.change-plan {
+  position: absolute;
+  height: 420px;
+  top: 60px;
+  left: 40px;
+  border-color: gray;
+  box-shadow: inset 0 0 10px 2px rgb(168, 168, 168);
+}
+.change-plan-second {
+  margin-left: 350px;
+}
+.change-plan-title {
+  font-size: 40px;
+  margin-bottom: -10px;
+}
+.changebul-one {
+  color: orange;
+  font-size: 20px;
+}
+.changebul-two {
+  font-size: 30px;
+}
+.changebul-three {
+  color: gray;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.change-btn {
+  margin-top: 10px;
+}
+.change-close-contain {
+  position: absolute;
+  top: 3px;
+  left: 683px;
+  width: 20px;
+}
+.change-close {
+  position: relative;
+  color: white;
 }
 /*  */
 .update-card-contain {
@@ -218,7 +413,7 @@
   width: 500px;
   height: 100%;
   border-radius: 5px;
-  box-shadow: 0 0 20px 5px rgb(70, 70, 70);
+  box-shadow: inset 0 0 10px 0px #a11600;
   background: linear-gradient(#ff573d, #eb1f00);
   z-index: 2;
 }

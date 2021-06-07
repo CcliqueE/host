@@ -20,7 +20,9 @@ class Pricing extends React.Component {
             sub_show_one: false,
             sub_show_two: false,
             sub_show_three: false,
-            alreadySub: false,
+            alreadySub_one: false,
+            alreadySub_two: false,
+            alreadySub_three: false,
             loading: false,
             cardHolder: '',
             cardNumber: '',
@@ -38,9 +40,9 @@ class Pricing extends React.Component {
             exp_year_three: '',
             cvc_three: ''
         }
-        this.session_Subsciption_one = this.session_Subsciption_one.bind(this)
-        this.session_Subsciption_two = this.session_Subsciption_two.bind(this)
-        this.session_Subsciption_three = this.session_Subsciption_three.bind(this)
+        this.session_Subscription_one = this.session_Subscription_one.bind(this)
+        this.session_Subscription_two = this.session_Subscription_two.bind(this)
+        this.session_Subscription_three = this.session_Subscription_three.bind(this)
         this.createSubscription_one = this.createSubscription_one.bind(this)
         this.createSubscription_two = this.createSubscription_two.bind(this)
         this.createSubscription_three = this.createSubscription_three.bind(this)
@@ -53,41 +55,51 @@ class Pricing extends React.Component {
         });
     };
 
-    session_Subsciption_one(event) {
+    session_Subscription_one(event) {
         event.preventDefault()
-        if (sessionStorage.getItem('koopa') !== 'null') {
-            this.setState({ alreadySub: true })
+        if (sessionStorage.getItem('zkShrinks') === null) {
+            window.location = '/register-login'
+        } else if (sessionStorage.getItem('koopa') !== 'null') {
+            this.setState({ alreadySub_one: true })
+            this.setState({ alreadySub_two: false })
+            this.setState({ alreadySub_three: false })
         } else if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
             this.setState({ sub_show_one: true })
         } else if (this.state.sub_show_one === true) {
             this.setState({ sub_show_one: false })
             window.location.reload()
-        } else {
-            window.location = '/register-login'
         }
     }
 
-    session_Subsciption_two(event) {
+    session_Subscription_two(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
-            this.setState({ sub_show_one: true })
-        } else if (this.state.sub_show_one === true) {
-            this.setState({ sub_show_one: false })
-            window.location.reload()
-        } else {
+        if (sessionStorage.getItem('zkShrinks') === null) {
             window.location = '/register-login'
+        } else if (sessionStorage.getItem('koopa') !== 'null') {
+            this.setState({ alreadySub_two: true })
+            this.setState({ alreadySub_one: false })
+            this.setState({ alreadySub_three: false })
+        } else if (this.state.sub_show_two === false && sessionStorage.getItem('zkShrinks') !== null) {
+            this.setState({ sub_show_two: true })
+        } else if (this.state.sub_show_two === true) {
+            this.setState({ sub_show_two: false })
+            window.location.reload()
         }
     }
 
-    session_Subsciption_three(event) {
+    session_Subscription_three(event) {
         event.preventDefault()
-        if (this.state.sub_show_one === false && sessionStorage.getItem('zkShrinks') !== null) {
-            this.setState({ sub_show_one: true })
-        } else if (this.state.sub_show_one === true) {
-            this.setState({ sub_show_one: false })
-            window.location.reload()
-        } else {
+        if (sessionStorage.getItem('zkShrinks') === null) {
             window.location = '/register-login'
+        } else if (sessionStorage.getItem('koopa') !== 'null') {
+            this.setState({ alreadySub_three: true })
+            this.setState({ alreadySub_two: false })
+            this.setState({ alreadySub_one: false })
+        } else if (this.state.sub_show_three === false && sessionStorage.getItem('zkShrinks') !== null) {
+            this.setState({ sub_show_three: true })
+        } else if (this.state.sub_show_three === true) {
+            this.setState({ sub_show_three: false })
+            window.location.reload()
         }
     }
 
@@ -162,7 +174,7 @@ class Pricing extends React.Component {
         <div className="pricing-page-contain">
             <NavBar/>
             
-            <div className="cards">
+            <div className="cards card-price">
             <CardColumns className="pricing-cards">
                 <Card className="pricing">
                     <Card.Body>
@@ -179,13 +191,14 @@ class Pricing extends React.Component {
                         <h2 className="accessbul-three"><IoMdClose/> Info6</h2>
                     </ul>
                     <Card.Body>
-                        <Button onClick={this.session_Subsciption_one} variant="defualt" className="choose-btn tier_one">
+                        <Button onClick={this.session_Subscription_one} variant="defualt" className="choose-btn tier_one">
                             <h4 className="choose-btn-txt">Purchase</h4>
                         </Button>
-                        {this.state.alreadySub === true ? 
+                        {this.state.alreadySub_one === true ? 
                         <div className="already-error-contain">
                             <div className="already-excl-contain"><h4 className="already-excl">!</h4></div>
                             <h4 className="already-error-text">Already Subscribed</h4>
+                            <div className="already-change-contain"><h5 className="already-change-text">Change Plan</h5></div>
                         </div>
                          : <div></div>}
                     </Card.Body>
@@ -207,9 +220,16 @@ class Pricing extends React.Component {
                         <h2 className="accessbul-three"><IoMdClose/> Info6</h2>
                     </ul>
                     <Card.Body>
-                        <Button onClick={this.session_Subsciption_two} variant="defualt" className="choose-btn">
+                        <Button onClick={this.session_Subscription_two} variant="defualt" className="choose-btn">
                             <h4 className="choose-btn-txt">Purchase</h4>
                         </Button>
+                        {this.state.alreadySub_two === true ? 
+                        <div className="already-error-contain">
+                            <div className="already-excl-contain"><h4 className="already-excl">!</h4></div>
+                            <h4 className="already-error-text">Already Subscribed</h4>
+                            <div className="already-change-contain"><h5 className="already-change-text">Change Plan</h5></div>
+                        </div>
+                         : <div></div>}
                     </Card.Body>
                     </div>
                 </Card>
@@ -228,9 +248,16 @@ class Pricing extends React.Component {
                         <h2 className="accessbul-three"><IoMdClose/> Info6</h2>
                     </ul>
                     <Card.Body>
-                        <Button onClick={this.session_Subsciption_three} variant="defualt" className="choose-btn">
+                        <Button onClick={this.session_Subscription_three} variant="defualt" className="choose-btn">
                             <h4 className="choose-btn-txt">Purchase</h4>
                         </Button>
+                        {this.state.alreadySub_three === true ? 
+                        <div className="already-error-contain">
+                            <div className="already-excl-contain"><h4 className="already-excl">!</h4></div>
+                            <h4 className="already-error-text">Already Subscribed</h4>
+                            <div className="already-change-contain"><h5 className="already-change-text">Change Plan</h5></div>
+                        </div>
+                         : <div></div>}
                     </Card.Body>
                 </Card>
             </CardColumns>
@@ -243,7 +270,7 @@ class Pricing extends React.Component {
                         <img className="inverted-logo" alt="logo" src={LogoInverse}/>
                         <h4 className="checkout-price-text">Monthly Recurring <HiArrowNarrowRight/> $18</h4>
                     </div>
-                    <Button onClick={this.session_Subsciption_one} variant="default" className="checkout-close">
+                    <Button onClick={this.session_Subscription_one} variant="default" className="checkout-close">
                         <BsX size={25}/>
                     </Button>
                     <div className="form-contain">
@@ -320,7 +347,7 @@ class Pricing extends React.Component {
                         <img className="inverted-logo" alt="logo" src={LogoInverse}/>
                         <h4 className="checkout-price-text">Monthly Recurring <HiArrowNarrowRight/> $26</h4>
                     </div>
-                    <Button onClick={this.session_Subsciption_two} variant="default" className="checkout-close">
+                    <Button onClick={this.session_Subscription_two} variant="default" className="checkout-close">
                         <BsX size={25}/>
                     </Button>
                     <div className="form-contain">
@@ -395,7 +422,7 @@ class Pricing extends React.Component {
                         <img className="inverted-logo" alt="logo" src={LogoInverse}/>
                         <h4 className="checkout-price-text">Monthly Recurring <HiArrowNarrowRight/> $36</h4>
                     </div>
-                    <Button onClick={this.session_Subsciption_three} variant="default" className="checkout-close">
+                    <Button onClick={this.session_Subscription_three} variant="default" className="checkout-close">
                         <BsX size={25}/>
                     </Button>
                     <div className="form-contain">

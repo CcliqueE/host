@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Logo from '../img/rust-logo.png'
 import Crown from '../img/subscribed-crown.png'
+import Crown_two from '../img/cancelled-crown.png'
 import ProfileLogo from '../img/user-profile-final.png'
 import '../css/consistent.css'
 
@@ -71,7 +72,8 @@ export default class NavBar extends React.Component {
                         
                         {sessionStorage.getItem('zkShrinks') !== null && sessionStorage.getItem('zkShrinks').includes('') === true ? 
                         <div onClick={this.redirect_two} className="profile-btn" >
-                            {sessionStorage.getItem('koopa') !== 'null' ? <img className="sub-crown" src={Crown} alt="crown"/> : <div></div>}
+                            {sessionStorage.getItem('bMo') === 'true' ? <img className="sub-crown" src={Crown} alt="crown"/>
+                             : <img className="sub-crown" src={Crown_two} alt="crown"/>}
                             <img className="profile-img" src={ProfileLogo} alt="profile"/>
                             <h3 className="profile-name">{this.state.username}</h3>
                         </div >

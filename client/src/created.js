@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 
 import { Col, Form, Button, Alert } from 'react-bootstrap'
 
-class SignIn extends React.Component {
+class Created extends React.Component {
     constructor (props){
         super(props)
         this.state = {
@@ -18,25 +18,36 @@ class SignIn extends React.Component {
             loginpass: '',
             passconfirm: '',
             show: true,
-            taken: Boolean,
-            pass: Boolean
+            empty: false,
+            taken: false,
+            pass: Boolean,
         }
 
         this.handleInputChange = this.handleInputChange.bind(this)
         this.registerSubmit = this.registerSubmit.bind(this);
         this.loginSubmit = this.loginSubmit.bind(this)
+        // this.checkBox = this.checkBox.bind(this)
     }
 
     handleInputChange = e => {
         this.setState({
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     };
 
     registerSubmit(event) {
         if (this.state.password !== this.state.passconfirm) {
             event.preventDefault()
-            alert('Passwords do not match')
+        } else if (this.state.username.length > 15) {
+            event.preventDefault()
+        } else if (this.state.username.indexOf(' ') > 0 || this.state.password.indexOf(' ') > 0) {
+            event.preventDefault()
+        } else if (this.state.email === '' ||
+        this.state.username === '' ||
+        this.state.password === '' ||
+        this.state.passconfirm === '') {
+            this.setState({ empty: true })
+            event.preventDefault()
         } else if (this.state.email !== '' || 
         this.state.username !== '' ||  
         this.state.password !== '' || 
@@ -50,10 +61,9 @@ class SignIn extends React.Component {
             axios
             .post('http://localhost:5000/register', register)
             .then(() => {window.location = '/register-login/created'})
-            .then(this.setState({taken: false}))
             .catch(err => {
                 console.error(parseInt(err));
-                this.setState({taken: true})
+                this.setState({ taken: true })
             });
         } else {
             window.location.reload()
@@ -61,21 +71,34 @@ class SignIn extends React.Component {
     }
 
     loginSubmit(event) {
-        if (this.state.loginuser !== '' ||  this.state.loginpass !== '') {
+        if (this.state.loginemail !== '' || this.state.loginpass !== '' || event.charCode === 13) {
+            
             event.preventDefault()
             const login = {
                 email: this.state.loginemail,
-                username: this.state.loginuser,
                 password: this.state.loginpass
             }
             axios
             .post('http://localhost:5000/login', login)
-            .then(() => {window.location = '/dashboard'})
-            .then(() => {sessionStorage.setItem('username', this.state.loginuser)})
-            .catch(err => {
-                console.error(err)
-                this.setState({pass: false})
+            .then((res) => { 
+                sessionStorage.setItem('zkShrinks', res.data[0])
+                sessionStorage.setItem('koopa', res.data[1])
+                sessionStorage.setItem('cactus', res.data[2])
+                sessionStorage.setItem('bMo', res.data[3])
             })
+            .then((res) => { window.location = '/dashboard' })
+            .catch(err => {
+                event.preventDefault()
+                console.error(err)
+                this.setState({ pass: false })
+            })
+            
+            axios
+            .post('http://localhost:5000/delete-expired')
+            .catch (err => {
+                console.error(err)
+            })
+
         } else {
             event.preventDefault()
         }
@@ -99,14 +122,20 @@ class SignIn extends React.Component {
                 <Form.Row>
                     <Col className="sign-div" xs={12} md={6}>
                         <Form.Group>
+                            {this.state.empty === true ? 
+                            <div className="empty-error-contain">
+                                <div className="empty-error-excl-contain"><h4 className="empty-error-excl">!</h4></div>
+                                <h4 className="empty-error-text">No input can be empty</h4>
+                            </div>
+                             : <div></div>}
                             <h1>Sign Up</h1>
-                            <Form.Label>Email address</Form.Label>
                             {this.state.taken === true ? 
                             <div className="taken-alert">
                                 <div className="taken-alert-ex"><h5 className="taken-ex-text">!</h5></div>
                                 <h4 className="taken-alert-text">Email has been taken</h4>
                             </div>
                              : <div></div>}
+                            <Form.Label>Email address</Form.Label>
                             <Form.Control
                             name="email"
                             className="form" 
@@ -125,6 +154,12 @@ class SignIn extends React.Component {
                             value={this.state.username}
                             onChange={this.handleInputChange}/>
                         </Form.Group>
+                        {this.state.username.length > 15 ?
+                        <div className="long-error-contain">
+                            <h4 className="long-error-title">Username is too long</h4>
+                            <h4 className="long-error-info">Should be less than 15 characters</h4>
+                        </div>
+                         : <div></div>}
                         <Form.Group>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
@@ -160,9 +195,13 @@ class SignIn extends React.Component {
                         ) : (
                         <div></div>
                         )}
-                        <Form.Group controlId="box1">
-                            <Form.Check className="box" type="checkbox" label="Remember Me" />
-                        </Form.Group>
+                        {this.state.username.indexOf(' ') >= 0 || 
+                        this.state.password.indexOf(' ') >= 0 ? 
+                        <div className="space-error-contain">
+                            <div className="space-error-excl-contain"><h4 className="space-error-excl">!</h4></div>
+                            <h4 className="space-error-text">No spaces are allowed for Password or Username</h4>
+                        </div>
+                         : <div></div>}
                         <Button 
                         className="sign-log-btn" 
                         href=''
@@ -193,17 +232,7 @@ class SignIn extends React.Component {
                             placeholder="Email"
                             value={this.state.loginemail}
                             onChange={this.handleInputChange}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                        <Form.Label>Username</Form.Label>
-                            <Form.Control 
-                            name="loginuser"
-                            className="form" 
-                            type="text" 
-                            placeholder="Username"
-                            value={this.state.loginusername}
-                            onChange={this.handleInputChange}
+                            
                             />
                         </Form.Group>
                         <Form.Group >
@@ -214,7 +243,8 @@ class SignIn extends React.Component {
                             type="password" 
                             placeholder="Password"
                             value={this.state.loginpass}
-                            onChange={this.handleInputChange}/>
+                            onChange={this.handleInputChange}
+                            />
                         </Form.Group>
                         <Form.Group className="box" controlId="box2">
                             <Form.Check type="checkbox" label="Remember Me" />
@@ -225,6 +255,7 @@ class SignIn extends React.Component {
                         variant="primary" 
                         type="submit"
                         value="Submit"
+                        onKeyPress={this.loginSubmit}
                         onClick={this.loginSubmit}
                         >
                             Submit
@@ -234,8 +265,6 @@ class SignIn extends React.Component {
                 </Form.Row>
                 </Form>
             </div>
-            
-            
 
             <Footer/>
         </div>
@@ -243,4 +272,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn
+export default Created
